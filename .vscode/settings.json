@@ -6,5 +6,11 @@
 		{
 			"text": "This workspace is in a dev container running on \"Alpine Linux v3.23\".\n\nUse `\"$BROWSER\" <url>` to open a webpage in the host's default browser.\n\nSome of the command line tools available on the `PATH`: `apk`, `git`, `curl`, `wget`, `ssh`, `scp`, `rsync`, `gpg`, `ps`, `lsof`, `netstat`, `top`, `tree`, `find`, `grep`, `zip`, `unzip`, `tar`, `gzip`, `bzip2`, `xz`"
 		}
-	]
+	],
+	"chat.tools.terminal.autoApprove": {
+		"/^git diff --check --no-index /dev/null \\.github/workflows/pages\\.yml; test -f Protype1\\.html && printf 'Prototype file is present\\\\n'$/": {
+			"approve": true,
+			"matchCommandLine": true
+		}
+	}
 }
