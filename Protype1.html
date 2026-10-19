@@ -881,17 +881,23 @@
             <div id="modalFormState">
                 <span class="modal-icon">🚀</span>
                 <h3>Secure Launch Priority</h3>
-                <p>Early bird slots are limited. Enter your email to receive an instant direct mint notification and lock in your \$299 launch price point before retail release.</p>
-                <input type="email" class="form-input" id="subscriberEmail" placeholder="Enter your matrix address (Email)" required>
-                <button class="cta-btn" style="width: 100%; padding: 14px;" onclick="submitPreorderForm()">Authorize Spot Reservation</button>
+                <p>Enter your email to receive a confirmation for this demo preorder signup. No payment will be taken.</p>
+                <form action="https://formsubmit.co/1yaoeth@hdsb.ca" method="POST">
+                    <input type="hidden" name="_subject" value="New Stratus Smart Robe preorder signup">
+                    <input type="hidden" name="_autoresponse" value="Thanks for pre-ordering the Stratus Smart Robe! This is a demo signup confirmation only. No purchase or payment was processed. We'll share updates as the project develops.">
+                    <input type="hidden" name="_next" value="https://ethanyaozers.github.io/Stratus-Smart-Robe/Protype1.html?preorder=success#preorder">
+                    <input type="email" class="form-input" id="subscriberEmail" name="email" placeholder="Enter your email address" autocomplete="email" required>
+                    <button class="cta-btn" style="width: 100%; padding: 14px;" type="submit">Authorize Spot Reservation</button>
+                </form>
+                <p style="font-size: 12px; margin: 12px 0 0;">Your email will be sent through FormSubmit to 1yaoeth@hdsb.ca, and you'll receive a confirmation. Demo signup only; no payment is taken.</p>
             </div>
 
             <!-- Interactive Success State Layout -->
             <div id="modalSuccessState" class="success-state">
                 <span class="modal-icon" style="color: var(--accent-cyan)">⚡</span>
-                <h3>Reservation Confirmed</h3>
+                <h3>Thanks for signing up!</h3>
                 <p style="color: #ffffff; font-weight: 600;">Welcome to the Inner Circle.</p>
-                <p>Your allocation has been cached. A manufacturing timeline map and early confirmation hash have been transmitted to your provided address.</p>
+                <p>A confirmation email is on its way. This is a demo preorder signup; no purchase or payment was processed.</p>
                 <button class="cta-btn" style="width: 100%; padding: 12px; background: #222943; color: #fff;" onclick="closePreorderModal()">Exit Interface</button>
             </div>
         </div>
@@ -1105,19 +1111,18 @@
             document.getElementById('subscriberEmail').value = '';
         }
 
+        function showPreorderSuccess() {
+            document.getElementById('preorderModal').classList.add('active');
+            document.getElementById('modalFormState').style.display = 'none';
+            document.getElementById('modalSuccessState').style.display = 'block';
+        }
+
         function closePreorderModal() {
             document.getElementById('preorderModal').classList.remove('active');
         }
 
-        function submitPreorderForm() {
-            const emailInput = document.getElementById('subscriberEmail');
-            if (emailInput.value && emailInput.checkValidity()) {
-                document.getElementById('modalFormState').style.display = 'none';
-                document.getElementById('modalSuccessState').style.display = 'block';
-            } else {
-                emailInput.focus();
-                emailInput.style.borderColor = 'var(--accent-pink)';
-            }
+        if (new URLSearchParams(window.location.search).get('preorder') === 'success') {
+            showPreorderSuccess();
         }
     </script>
 </body>
