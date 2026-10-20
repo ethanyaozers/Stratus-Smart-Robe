@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratus Smart Robe | The Future of Loungewear</title>
+    <style>
+        :root {
+            --bg-color: #0d1210;
+            --card-bg: #151d19;
+            --panel-bg: #1b2620;
+            --accent-cyan: #8de2c1;
+            --accent-purple: #b8dfc4;
+            --accent-pink: #ff8770;
+            --accent-orange: #ffb454;
+            --text-main: #ffffff;
+            --text-muted: #8fa0b5;
+            --glow-cyan: rgba(141, 226, 193, 0.3);
+            --glow-pink: rgba(255, 135, 112, 0.35);
+            --glow-orange: rgba(255, 180, 84, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #242b45;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 6%;
+            background: rgba(13, 18, 16, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            color: #f3f6f2;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 auto;
+            fill: none;
+            stroke: var(--accent-cyan);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .cta-btn {
+            background: var(--accent-cyan);
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--glow-cyan);
+        }
+
+        .cta-btn:active {
+            transform: translateY(0);
+        }
+
+        .hero {
+            min-height: min(900px, 100svh);
+            padding: 132px 6% 64px;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at 50% 42%, #24372d 0%, #151e19 38%, var(--bg-color) 78%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(120deg, transparent 35%, rgba(141, 226, 193, 0.035) 50%, transparent 65%);
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .hero-tag {
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin: 0 0 24px 0;
+            letter-spacing: -1.5px;
+            line-height: 1.15;
+            max-width: 900px;
+            background: linear-gradient(180deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 45px auto;
+            line-height: 1.6;
+        }
+
+        .hero-product {
+            width: min(680px, 100%);
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .hero-robe {
+            width: min(330px, 58vw);
+            height: 280px;
+            filter: drop-shadow(0 28px 28px rgba(0, 0, 0, 0.38));
+            overflow: visible;
+        }
+
+        .hero-remote {
+            width: 180px;
+            height: 220px;
+            filter: drop-shadow(0 20px 26px rgba(0, 0, 0, 0.42));
+        }
+
+        .touchscreen-callout {
+            align-self: center;
+            max-width: 180px;
+            color: #e6eee7;
+            text-align: left;
+        }
+
+        .touchscreen-callout strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-cyan);
+            font-size: 11px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .touchscreen-callout span {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .screen-live {
+            color: var(--accent-cyan);
+        }
+
+        .screen-live::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 7px;
+            border-radius: 50%;
+            background: currentColor;
+            vertical-align: 1px;
+        }
+
+        .robe-shell {
+            fill: #aab9ae;
+            transition: fill 0.35s ease;
+        }
+
+        .robe-detail {
+            fill: none;
+            stroke: #dbe5dc;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 3;
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 0;
+            right: 5%;
+            color: #b7c6bb;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto 50px auto;
+        }
+
+        /* Features Section */
+        .features-container {
+            padding: 60px 6% 100px 6%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 8px;
+            border: 1px solid #2a3830;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.05);
+        }
+
+        .feature-icon {
+            width: 38px;
+            height: 38px;
+            margin-bottom: 20px;
+            display: block;
+            color: var(--accent-cyan);
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin: 0 0 12px 0;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Interactive Simulator Section */
+        .simulator-section {
+            padding: 90px 6%;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #131b16 50%, var(--bg-color) 100%);
+        }
+
+        .simulator-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .simulator-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .robe-preview-panel {
+            background-color: var(--card-bg);
+            border: 1px solid #34443a;
+            border-radius: 8px;
+            padding: 40px;
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            transition: box-shadow 0.5s ease, border-color 0.5s ease;
+        }
+
+        .robe-visual-display {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        /* Animated Ambient LED Ring Inside Preview */
+        .led-glowing-ring {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px dashed var(--accent-cyan);
+            position: absolute;
+            transition: all 0.5s ease;
+            animation: rotateRing 20s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotateRing {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .robe-silhouette {
+            width: 240px;
+            height: 290px;
+            z-index: 2;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.35s ease;
+            position: relative;
+        }
+
+        #robePanel[data-mode="cold"] .robe-shell { fill: #9ccbd2; }
+        #robePanel[data-mode="hot"] .robe-shell { fill: #d9a17e; }
+        #robePanel[data-level="off"] .robe-shell { fill: #aab9ae; }
+
+        #robePanel[data-level="low"] { --climate-glow: rgba(103, 199, 188, 0.22); }
+        #robePanel[data-level="med"] { --climate-glow: rgba(255, 180, 84, 0.28); }
+        #robePanel[data-level="high"] { --climate-glow: rgba(255, 112, 92, 0.34); }
+
+        #robePanel[data-mode="cold"][data-level="low"] .robe-shell { fill: #9ac6c9; }
+        #robePanel[data-mode="cold"][data-level="med"] .robe-shell { fill: #75b8d0; }
+        #robePanel[data-mode="cold"][data-level="high"] .robe-shell { fill: #638ed0; }
+        #robePanel[data-mode="hot"][data-level="low"] .robe-shell { fill: #d6b27c; }
+        #robePanel[data-mode="hot"][data-level="med"] .robe-shell { fill: #df9369; }
+        #robePanel[data-mode="hot"][data-level="high"] .robe-shell { fill: #d97062; }
+
+        /* Fan Animation Indicators */
+        .fan-wave {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 2px solid transparent;
+            border-top-color: var(--accent-cyan);
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .display-status-bar {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .status-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-label {
+            color: var(--text-muted);
+        }
+
+        .status-val {
+            font-weight: 700;
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+
+        /* Remote Control Device UI */
+        .remote-device {
+            background: var(--panel-bg);
+            border: 1px solid #53675a;
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .touchscreen-status {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding: 0 2px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #dce7de;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .remote-title {
+            text-align: left;
+            font-weight: 700;
+            font-size: 21px;
+            letter-spacing: 0;
+            margin-bottom: 5px;
+            color: #f3f6f2;
+        }
+
+        .touchscreen-hint {
+            margin: 0 0 22px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .control-group {
+            margin-bottom: 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 18px;
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .control-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .remote-btn {
+            flex: 1;
+            background: #222943;
+            border: 1px solid #3b4b40;
+            color: var(--text-muted);
+            padding: 12px 10px;
+            border-radius: 8px;
+            min-height: 44px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .remote-btn:hover {
+            background: #2b3457;
+            color: #ffffff;
+        }
+
+        .remote-btn:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 2px;
+        }
+
+        .remote-btn.active {
+            background: var(--active-color, var(--accent-cyan));
+            color: #000000;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            font-weight: 700;
+        }
+
+        .remote-btn.active-warm {
+            background: var(--active-color, var(--accent-orange));
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(255, 106, 0, 0.4);
+            font-weight: 700;
+        }
+
+        .climate-lvl::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin-right: 6px;
+            border-radius: 50%;
+            background: var(--level-dot, #89938d);
+            vertical-align: 1px;
+        }
+
+        .climate-lvl.active::before,
+        .climate-lvl.active-warm::before {
+            background: currentColor;
+        }
+
+        /* Technical Comparison Section */
+        .specs-section {
+            padding: 60px 6% 90px 6%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-section {
+            padding: 76px 6% 90px;
+            background: #131b16;
+        }
+
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+            border-top: 1px solid #354139;
+        }
+
+        .faq-list details {
+            border-bottom: 1px solid #354139;
+        }
+
+        .faq-list summary {
+            padding: 22px 4px;
+            color: #f2f5ef;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            list-style-position: inside;
+        }
+
+        .faq-list details p {
+            max-width: 720px;
+            margin: 0 0 24px 28px;
+            color: var(--text-muted);
+        }
+
+        .comparison-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 20px;
+            border: 1px solid #1f2638;
+            background: var(--card-bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 20px 25px;
+            border-bottom: 1px solid #1f2638;
+        }
+
+        th {
+            background-color: #0f1220;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td.highlight {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 6%;
+            text-align: center;
+            background: radial-gradient(circle at bottom, #12172b 0%, var(--bg-color) 70%);
+        }
+
+        .price-box {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #161c30 100%);
+            max-width: 480px;
+            margin: 40px auto 0 auto;
+            padding: 55px 40px;
+            border-radius: 36px;
+            border: 1px solid #627c69;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .badge-premium {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 0, 127, 0.3);
+        }
+
+        .price-box h3 {
+            font-size: 26px;
+            margin: 0 0 15px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .price {
+            font-size: 56px;
+            font-weight: 800;
+            margin: 25px 0;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .price span {
+            font-size: 24px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        .price-currency {
+            font-size: 18px;
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        /* Custom Modal Box Architecture */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 5, 10, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--panel-bg);
+            border: 2px solid #2e3859;
+            border-radius: 28px;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            box-shadow: 0 25px 55px rgba(0,0,0,0.7);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal-btn:hover {
+            color: #ffffff;
+        }
+
+        .modal-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .modal-box h3 {
+            font-size: 24px;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+        }
+
+        .modal-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin: 0 0 25px 0;
+            line-height: 1.5;
+        }
+
+        .form-input {
+            width: 100%;
+            background: #0f1220;
+            border: 1px solid #2e3859;
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #ffffff;
+            font-size: 15px;
+            margin-bottom: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.15);
+        }
+
+        .success-state {
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 4px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border-top: 1px solid #161a27;
+            background-color: #05060a;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            .hero p {
+                font-size: 17px;
+            }
+            .hero-product {
+                min-height: 280px;
+                gap: 0;
+            }
+            .hero-robe {
+                width: min(280px, 70vw);
+                height: 230px;
+            }
+            .hero-remote {
+                width: 140px;
+                height: 180px;
+            }
+            .touchscreen-callout {
+                position: absolute;
+                right: 0;
+                bottom: -26px;
+                max-width: 130px;
+                text-align: right;
+            }
+            .touchscreen-callout span {
+                font-size: 11px;
+            }
+            .remote-device {
+                padding: 22px 16px;
+            }
+            .touchscreen-status {
+                font-size: 9px;
+            }
+            .hero-caption {
+                right: auto;
+                left: 0;
+                bottom: -4px;
+                font-size: 8px;
+                letter-spacing: 0.6px;
+            }
+            .section-title {
+                font-size: 30px;
+            }
+            header {
+                padding: 15px 4%;
+            }
+            nav {
+                display: none;
+            }
+            .price-box {
+                padding: 40px 20px;
+            }
+            .price {
+                font-size: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <a class="brand" href="#top" aria-label="Stratus home">
+            <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 14h20a5 5 0 1 0-5-5M5 21h27a5 5 0 1 1-5 5M5 28h17"/><path d="M9 9h3M13 33h4"/></svg>
+            <span class="logo">STRATUS</span>
+        </a>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#simulator">Touchscreen</a>
+            <a href="#specs">Specifications</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <a href="#preorder" class="cta-btn">Pre-Order</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-tag">Stratus Founder's Edition</div>
+        <h1>Comfort, tuned to you.</h1>
+        <p>A considered layer for winding down, with adjustable airflow, warmth, and an integrated sleeve touchscreen.</p>
+        <div class="hero-product" role="img" aria-label="Stratus robe concept showing an integrated touchscreen controller mounted on the sleeve">
+            <svg class="hero-robe" viewBox="0 0 300 320" aria-hidden="true">
+                <path class="robe-shell" d="M112 30 80 43 44 74 69 132 91 117 79 282 Q150 306 221 282 L209 117 231 132 256 74 220 43 188 30 150 70Z"/>
+                <path d="m112 30 38 40-27 53-27-6 16 165M188 30l-38 40 27 53 27-6-16 165M121 123l29-53 29 53-29 26z" fill="#77877b" opacity=".58"/>
+                <path class="robe-detail" d="M112 30 150 70 188 30M150 70v79m-29-26 29 26 29-26M79 282q71 22 142 0M91 117l-22 15m140-15 22 15"/>
+                <path d="M88 196q62 17 124 0l2 43q-64 18-128 0z" fill="#85968a" opacity=".8"/>
+                <rect x="201" y="138" width="28" height="43" rx="7" fill="#101713" stroke="#e0ebe1" stroke-width="2"/>
+                <rect x="205" y="143" width="20" height="33" rx="4" fill="#243b30"/>
+                <circle cx="215" cy="151" r="4" fill="#8de2c1"/>
+                <path d="M210 160h10m-10 5h10m-10 5h7" stroke="#d6e2d8" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <svg class="hero-remote" viewBox="0 0 180 220" aria-label="Magnified touchscreen interface">
+                <rect x="12" y="8" width="156" height="204" rx="24" fill="#0d1510" stroke="#9ab5a0" stroke-width="2"/>
+                <rect x="21" y="18" width="138" height="184" rx="17" fill="#17251c"/>
+                <path d="M39 40h31m-31 7h20" stroke="#91a998" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="139" cy="42" r="5" fill="#8de2c1"/>
+                <text x="36" y="79" fill="#a7b8aa" font-size="9" font-family="sans-serif" letter-spacing="1">CLIMATE</text>
+                <text x="35" y="110" fill="#f3f6f2" font-size="27" font-family="sans-serif" font-weight="700">COOL</text>
+                <text x="37" y="128" fill="#8de2c1" font-size="10" font-family="sans-serif">ECO MODE</text>
+                <rect x="35" y="143" width="110" height="42" rx="10" fill="#22352a" stroke="#3b5443"/>
+                <circle cx="55" cy="164" r="9" fill="#67c7bc"/>
+                <circle cx="90" cy="164" r="9" fill="#56aaff"/>
+                <circle cx="125" cy="164" r="9" fill="#ff8770"/>
+                <text x="45" y="188" fill="#bdc9be" font-size="7" font-family="sans-serif">LOW</text>
+                <text x="77" y="188" fill="#bdc9be" font-size="7" font-family="sans-serif">MID</text>
+                <text x="111" y="188" fill="#bdc9be" font-size="7" font-family="sans-serif">HIGH</text>
+            </svg>
+            <div class="touchscreen-callout"><strong>Built into the sleeve</strong><span>A color touchscreen puts climate and comfort controls right where you need them.</span></div>
+            <span class="hero-caption">Concept render · details subject to change</span>
+        </div>
+        <a href="#preorder" class="cta-btn">Secure Your Launch Discount</a>
+    </section>
+
+    <section class="features-container" id="features">
+        <h2 class="section-title">Engineered for Absolute Comfort</h2>
+        <p class="section-subtitle">Fusing high-performance techwear fabrics with ambient hardware intelligence.</p>
+
+        <div class="features">
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 14h18a5 5 0 1 0-5-5M5 21h27a5 5 0 1 1-5 5M5 28h16"/><path d="M10 9h3M13 33h4"/></svg>
+                <h3>Micro-Blower AC</h3>
+                <p>Dual ultra-quiet brushless fans circulate crisp, refreshing air through a specialized internal air-layer to prevent sweat and fabric adhesion.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 24V16a12 12 0 0 1 24 0v8M8 20H5v8h7v-8zm24 0h3v8h-7v-8zM16 31c2 2 6 2 8 0"/></svg>
+                <h3>Spatial Audio Collar</h3>
+                <p>Thin, flexible bone-conduction panels embedded in the collar create a private audio bubble without the need for isolating earbuds.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="m20 4 3.5 11.5L35 19l-11.5 3.5L20 34l-3.5-11.5L5 19l11.5-3.5z"/><path d="m32 27 1.5 4.5L38 33l-4.5 1.5L32 39l-1.5-4.5L26 33l4.5-1.5z"/></svg>
+                <h3>Reactive Nebula LEDs</h3>
+                <p>Embedded NeoPixel light strips diffuse glowing ambient lighting through a frosted mesh shell, pulsing seamlessly to sound frequencies.</p>
+            </div>
+            <div class="feature-card">
+                <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="5" width="26" height="30" rx="8"/><path d="M14 15h12M14 21h12M14 27h7"/><circle cx="27" cy="27" r="2"/></svg>
+                <h3>Built-in Sleeve Touchscreen</h3>
+                <p>Tap the color touchscreen integrated into the robe's sleeve to adjust climate levels, airflow, audio, and lighting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Simulator Module -->
+    <section class="simulator-section" id="simulator">
+        <h2 class="section-title">Experience the Interface</h2>
+        <p class="section-subtitle">Preview the integrated sleeve touchscreen and tap its controls to adjust the robe.</p>
+
+        <div class="simulator-container">
+            <!-- Left Side: Live Preview Panel -->
+            <div class="robe-preview-panel" id="robePanel" data-mode="cold" data-level="off">
+                <div class="robe-visual-display">
+                    <div class="led-glowing-ring" id="ledRing"></div>
+                    <div class="fan-wave" id="fanIndicator1"></div>
+                    <svg class="robe-silhouette" id="robeIcon" viewBox="0 0 300 320" role="img" aria-label="Illustration of the Stratus robe">
+                        <path class="robe-shell" d="M112 30 80 43 44 74 69 132 91 117 79 282 Q150 306 221 282 L209 117 231 132 256 74 220 43 188 30 150 70Z"/>
+                        <path d="m112 30 38 40-27 53-27-6 16 165M188 30l-38 40 27 53 27-6-16 165M121 123l29-53 29 53-29 26z" fill="#77877b" opacity=".58"/>
+                        <path class="robe-detail" d="M112 30 150 70 188 30M150 70v79m-29-26 29 26 29-26M79 282q71 22 142 0M91 117l-22 15m140-15 22 15"/>
+                        <path d="M88 196q62 17 124 0l2 43q-64 18-128 0z" fill="#85968a" opacity=".8"/>
+                        <rect x="205" y="141" width="21" height="37" rx="6" fill="#293b31" stroke="#d9e6dc" stroke-width="2"/>
+                        <circle cx="215.5" cy="152" r="3" fill="#8de2c1"/>
+                    </svg>
+                </div>
+
+                <div class="display-status-bar">
+                    <div class="status-row">
+                        <span class="status-label">Climate Control:</span>
+                        <span class="status-val" id="statusClimate">COLD - OFF</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">Layered Insulation:</span>
+                        <span class="status-val" id="statusInsulation">OFF</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">Nebula LED Mode:</span>
+                        <span class="status-val" id="statusLed">OFF</span>
+                    </div>
+                    <div class="status-row">
+                        <span class="status-label">Bluetooth Audio:</span>
+                        <span class="status-val" id="statusAudio">DISCONNECTED</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Integrated Sleeve Touchscreen Interface -->
+            <div class="remote-device">
+                <div class="touchscreen-status"><span>STRATUS DISPLAY</span><span class="screen-live">Touch interface</span></div>
+                <div class="remote-title">Comfort controls</div>
+                <p class="touchscreen-hint">Integrated color touchscreen · sleeve mounted</p>
+
+                <!-- Climate Mode & Level Zone -->
+                <div class="control-group">
+                    <span class="control-label">Climate Element Target</span>
+                    <div class="btn-row" style="margin-bottom: 10px;">
+                        <button class="remote-btn active" id="modeCold" onclick="setClimateMode('cold')">Cold (AC)</button>
+                        <button class="remote-btn" id="modeHot" onclick="setClimateMode('hot')">Hot (Thermal)</button>
+                    </div>
+                    <span class="control-label">Intensity Level</span>
+                    <div class="btn-row">
+                        <button class="remote-btn climate-lvl active" data-level="off" style="--level-dot: #89938d" aria-pressed="true" onclick="setClimateLevel('off', this)">Off</button>
+                        <button class="remote-btn climate-lvl" data-level="low" style="--level-dot: #67c7bc" aria-pressed="false" onclick="setClimateLevel('low', this)">Eco</button>
+                        <button class="remote-btn climate-lvl" data-level="med" style="--level-dot: #56aaff" aria-pressed="false" onclick="setClimateLevel('med', this)">Comfort</button>
+                        <button class="remote-btn climate-lvl" data-level="high" style="--level-dot: #4785ff" aria-pressed="false" onclick="setClimateLevel('high', this)">Boost</button>
+                    </div>
+                </div>
+
+                <!-- Inflatable Insulation Zone -->
+                <div class="control-group">
+                    <span class="control-label">Layered Inflatable Insulation</span>
+                    <div class="btn-row">
+                        <button class="remote-btn active" onclick="setInsulation('off', this)">Off</button>
+                        <button class="remote-btn" onclick="setInsulation('lvl1', this)">Lvl 1</button>
+                        <button class="remote-btn" onclick="setInsulation('lvl2', this)">Lvl 2</button>
+                        <button class="remote-btn" onclick="setInsulation('max', this)">Max</button>
+                    </div>
+                </div>
+
+                <!-- LED Theme Zone -->
+                <div class="control-group">
+                    <span class="control-label">Nebula LED Profiles</span>
+                    <div class="btn-row">
+                        <button class="remote-btn active" onclick="setLed('off', this)">No LED (Off)</button>
+                        <button class="remote-btn" onclick="setLed('pulse', this)">Cyan Pulse</button>
+                        <button class="remote-btn" onclick="setLed('nebula', this)">Nebula Glow</button>
+                    </div>
+                </div>
+
+                <!-- Audio Environment Zone -->
+                <div class="control-group">
+                    <span class="control-label">Audio Environment Connection</span>
+                    <div class="btn-row">
+                        <button class="remote-btn" id="bluetoothBtn" onclick="triggerBluetoothPairing()" style="border-color: #3b82f6;">Connect Bluetooth</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <h2 class="section-title">Good to know</h2>
+        <p class="section-subtitle">Practical details for everyday care and use.</p>
+        <div class="faq-list">
+            <details>
+                <summary>Can I wash the robe?</summary>
+                <p>The robe is being designed with removable electronics and battery components. Remove all electronic modules before cleaning; final wash instructions will be provided with the production garment.</p>
+            </details>
+            <details>
+                <summary>How long does the battery last?</summary>
+                <p>The concept includes a 10,000 mAh USB-C power bank. Runtime depends on the selected climate and lighting settings, and has not yet been finalized.</p>
+            </details>
+            <details>
+                <summary>How much does it weigh?</summary>
+                <p>Final product weight is still being determined as the garment and hardware are refined. A verified weight will be shared before production.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Specs Comparison Matrix -->
+    <section class="specs-section" id="specs">
+        <h2 class="section-title">How It Compares</h2>
+        <p class="section-subtitle">Traditional loungewear vs. modern proactive comfort hardware architecture.</p>
+
+        <div class="comparison-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature Specification</th>
+                        <th>Standard Premium Robe</th>
+                        <th>Stratus Founder's Edition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Climate Regulation</td>
+                        <td>Passive insulation (Trap heat/sweat)</td>
+                        <td class="highlight">Active dual brushless induction cooling</td>
+                    </tr>
+                    <tr>
+                        <td>Acoustic Architecture</td>
+                        <td>None (Requires separate headphones)</td>
+                        <td class="highlight">Integrated open-ear bone conduction collar</td>
+                    </tr>
+                    <tr>
+                        <td>Visual Personalization</td>
+                        <td>Static single fabric color</td>
+                        <td class="highlight">NeoPixel mesh arrays with reactive logic</td>
+                    </tr>
+                    <tr>
+                        <td>Power Distribution</td>
+                        <td>N/A</td>
+                        <td class="highlight">10,000mAh magnetic quick-snap power bank</td>
+                    </tr>
+                    <tr>
+                        <td>Control Interface</td>
+                        <td>Manual cloth belt tie</td>
+                        <td class="highlight">Integrated sleeve-mounted color touchscreen</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Pricing / Preorder Segment -->
+    <section class="pricing" id="preorder">
+        <h2>Exclusive Crowdfunding Offer</h2>
+        <p>Join the inner circle. Gain early manufacturing sequence allocation before global retail rates go live.</p>
+        <div class="price-box">
+            <div class="badge-premium">Early Bird Launch Allocation</div>
+            <h3>Stratus Founder's Edition</h3>
+            <div class="price"><span>$450</span>$299 <span class="price-currency">USD</span></div>
+            <p style="color: var(--text-muted); margin-bottom: 35px; font-size: 14px; line-height: 1.5;">Includes Smart Robe assembly with integrated sleeve touchscreen and a USB-C power bank.</p>
+            <button class="cta-btn" style="width: 100%; padding: 16px;" onclick="openPreorderModal()">Reserve My Spot</button>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Stratus Techwear Inc. All rights reserved. Designed for the futuristic lounger ecosystem.
+    </footer>
+
+    <!-- Futuristic Custom Dialogue Overlays (No Alert Blocks) -->
+    <div class="modal-overlay" id="preorderModal">
+        <div class="modal-box">
+            <button class="close-modal-btn" onclick="closePreorderModal()">&times;</button>
+
+            <!-- Default Sign Up Form Layout -->
+            <div id="modalFormState">
+                <svg class="modal-icon feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M21 5c7 2 11 8 12 15l-9 9-9-9c1-7 5-13 6-15z"/><path d="m15 20-7 2-3 7 10-3m10 0 3 8 5-5-2-7M19 14h.1"/><circle cx="21" cy="14" r="2"/></svg>
+                <h3>Secure Launch Priority</h3>
+                <p>Early bird slots are limited. Enter your email to receive an instant direct mint notification and lock in your \$299 launch price point before retail release.</p>
+                <input type="email" class="form-input" id="subscriberEmail" placeholder="Enter your matrix address (Email)" required>
+                <button class="cta-btn" style="width: 100%; padding: 14px;" onclick="submitPreorderForm()">Authorize Spot Reservation</button>
+            </div>
+
+            <!-- Interactive Success State Layout -->
+            <div id="modalSuccessState" class="success-state">
+                <svg class="modal-icon feature-icon" style="color: var(--accent-cyan)" viewBox="0 0 40 40" aria-hidden="true"><path d="M22 3 9 22h9l-1 15 14-21h-9z"/></svg>
+                <h3>Reservation Confirmed</h3>
+                <p style="color: #ffffff; font-weight: 600;">Welcome to the Inner Circle.</p>
+                <p>Your allocation has been cached. A manufacturing timeline map and early confirmation hash have been transmitted to your provided address.</p>
+                <button class="cta-btn" style="width: 100%; padding: 12px; background: #222943; color: #fff;" onclick="closePreorderModal()">Exit Interface</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Stateful Architecture Management
+        let systemState = {
+            climateMode: 'cold',  // 'cold' or 'hot'
+            climateLevel: 'off',  // 'off', 'low', 'med', 'high'
+            insulation: 'off',    // 'off', 'lvl1', 'lvl2', 'max'
+            ledMode: 'off',       // 'off', 'pulse', 'nebula'
+            bluetooth: 'disconnected' // 'disconnected', 'pairing', 'connected'
+        };
+
+        const climateColors = {
+            cold: { low: '#67c7bc', med: '#56aaff', high: '#4785ff' },
+            hot: { low: '#ffd166', med: '#ff9a62', high: '#f05d5e' }
+        };
+
+        function setClimateMode(mode) {
+            systemState.climateMode = mode;
+
+            const coldBtn = document.getElementById('modeCold');
+            const hotBtn = document.getElementById('modeHot');
+
+            if (mode === 'cold') {
+                coldBtn.classList.add('active');
+                coldBtn.classList.remove('active-warm');
+                hotBtn.classList.remove('active', 'active-warm');
+            } else {
+                hotBtn.classList.add('active-warm');
+                hotBtn.classList.remove('active');
+                coldBtn.classList.remove('active', 'active-warm');
+            }
+
+            document.getElementById('robePanel').dataset.mode = mode;
+
+            // Re-apply style updates across active thresholds
+            renderSimulatorUpdates();
+        }
+
+        function setClimateLevel(level, element) {
+            systemState.climateLevel = level;
+            const panel = document.getElementById('robePanel');
+            panel.dataset.level = level;
+
+            // Sync UI active classes within the level selection array
+            const buttons = document.getElementsByClassName('climate-lvl');
+            for (let btn of buttons) {
+                btn.classList.remove('active', 'active-warm');
+                btn.setAttribute('aria-pressed', 'false');
+            }
+
+            if (level !== 'off') {
+                if (systemState.climateMode === 'cold') {
+                    element.classList.add('active');
+                } else {
+                    element.classList.add('active-warm');
+                }
+            } else {
+                element.classList.add('active');
+            }
+            element.setAttribute('aria-pressed', 'true');
+
+            if (level !== 'off') {
+                const selectedColor = climateColors[systemState.climateMode][level];
+                element.style.setProperty('--active-color', selectedColor);
+                panel.style.setProperty('--climate-active-color', selectedColor);
+            } else {
+                panel.style.removeProperty('--climate-active-color');
+            }
+
+            renderSimulatorUpdates();
+        }
+
+        function setInsulation(level, element) {
+            systemState.insulation = level;
+            updateControlGroupActive(element);
+
+            const robeIcon = document.getElementById('robeIcon');
+
+            // Simulate visual compression/expansion based on geometric insulation depth levels
+            if (level === 'off') {
+                document.getElementById('statusInsulation').innerText = 'OFF';
+                robeIcon.style.transform = 'scale(1)';
+            } else if (level === 'lvl1') {
+                document.getElementById('statusInsulation').innerText = 'LEVEL 1 (LAYERED)';
+                robeIcon.style.transform = 'scale(1.04)';
+            } else if (level === 'lvl2') {
+                document.getElementById('statusInsulation').innerText = 'LEVEL 2 (DYNAMIC)';
+                robeIcon.style.transform = 'scale(1.08)';
+            } else if (level === 'max') {
+                document.getElementById('statusInsulation').innerText = 'MAX INFLATION';
+                robeIcon.style.transform = 'scale(1.13)';
+            }
+        }
+
+        function setLed(mode, element) {
+            systemState.ledMode = mode;
+            updateControlGroupActive(element);
+            renderLedEffects();
+        }
+
+        function triggerBluetoothPairing() {
+            const btBtn = document.getElementById('bluetoothBtn');
+            const btStatus = document.getElementById('statusAudio');
+
+            if (systemState.bluetooth === 'connected') {
+                // Disconnect option
+                systemState.bluetooth = 'disconnected';
+                btBtn.innerText = 'Connect Bluetooth';
+                btBtn.style.background = '#222943';
+                btBtn.style.color = 'var(--text-muted)';
+                btBtn.style.boxShadow = 'none';
+                btStatus.innerText = 'DISCONNECTED';
+                btStatus.style.color = '#ffffff';
+                return;
+            }
+
+            // Simulate Pairing States
+            systemState.bluetooth = 'pairing';
+            btBtn.innerText = 'Pairing...';
+            btBtn.disabled = true;
+            btStatus.innerText = 'SEARCHING FOR PAIRING HARMONICS...';
+            btStatus.style.color = 'var(--accent-purple)';
+
+            setTimeout(() => {
+                systemState.bluetooth = 'connected';
+                btBtn.disabled = false;
+                btBtn.innerText = 'Disconnect Audio';
+                btBtn.style.background = 'linear-gradient(45deg, #2563eb, #3b82f6)';
+                btBtn.style.color = '#ffffff';
+                btBtn.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.4)';
+                btStatus.innerText = 'CONNECTED (BLUETOOTH AUDIO STREAM UP)';
+                btStatus.style.color = '#10b981';
+            }, 1400);
+        }
+
+        function renderSimulatorUpdates() {
+            const statusClimate = document.getElementById('statusClimate');
+            const fanIndicator = document.getElementById('fanIndicator1');
+            const modeUpper = systemState.climateMode.toUpperCase();
+            for (const [level, color] of Object.entries(climateColors[systemState.climateMode])) {
+                document.querySelector(`.climate-lvl[data-level="${level}"]`).style.setProperty('--level-dot', color);
+            }
+            const activeLevelButton = document.querySelector(`.climate-lvl[aria-pressed="true"]`);
+            if (activeLevelButton && systemState.climateLevel !== 'off') {
+                const selectedColor = climateColors[systemState.climateMode][systemState.climateLevel];
+                activeLevelButton.style.setProperty('--active-color', selectedColor);
+                activeLevelButton.classList.toggle('active-warm', systemState.climateMode === 'hot');
+                activeLevelButton.classList.toggle('active', systemState.climateMode === 'cold');
+                document.getElementById('robePanel').style.setProperty('--climate-active-color', selectedColor);
+            }
+
+            if (systemState.climateLevel === 'off') {
+                statusClimate.innerText = `${modeUpper} - OFF`;
+                statusClimate.style.color = '#ffffff';
+                fanIndicator.style.opacity = '0';
+                fanIndicator.style.animation = 'none';
+            } else {
+                statusClimate.innerText = `${modeUpper} - ${systemState.climateLevel.toUpperCase()}`;
+                fanIndicator.style.opacity = '0.8';
+
+                // Color Mapping
+                if (systemState.climateMode === 'cold') {
+                    const selectedColor = climateColors.cold[systemState.climateLevel];
+                    statusClimate.style.color = selectedColor;
+                    fanIndicator.style.borderTopColor = selectedColor;
+                } else {
+                    const selectedColor = climateColors.hot[systemState.climateLevel];
+                    statusClimate.style.color = selectedColor;
+                    fanIndicator.style.borderTopColor = selectedColor;
+                }
+
+                // Speed Rotation Mappings
+                if (systemState.climateLevel === 'low') {
+                    fanIndicator.style.animation = 'rotateRing 3.5s linear infinite';
+                } else if (systemState.climateLevel === 'med') {
+                    fanIndicator.style.animation = 'rotateRing 1.8s linear infinite';
+                } else if (systemState.climateLevel === 'high') {
+                    fanIndicator.style.animation = 'rotateRing 0.6s linear infinite';
+                }
+            }
+
+            // Dynamically refresh running ambient states
+            renderLedEffects();
+        }
+
+        renderSimulatorUpdates();
+
+        function renderLedEffects() {
+            const statusLed = document.getElementById('statusLed');
+            const ring = document.getElementById('ledRing');
+            const panel = document.getElementById('robePanel');
+
+            // Check active overrides if climate thermal loads change general canvas illumination backgrounds
+            if (systemState.ledMode === 'off') {
+                statusLed.innerText = 'OFF (NO LED)';
+                statusLed.style.color = '#ffffff';
+                ring.style.opacity = '0.1';
+                ring.style.border = '2px dashed #444';
+
+                if (systemState.climateLevel !== 'off' && systemState.climateMode === 'hot') {
+                    const color = climateColors.hot[systemState.climateLevel];
+                    panel.style.boxShadow = `0 0 25px ${color}66`;
+                    panel.style.borderColor = color;
+                } else if (systemState.climateLevel !== 'off' && systemState.climateMode === 'cold') {
+                    const color = climateColors.cold[systemState.climateLevel];
+                    panel.style.boxShadow = `0 0 25px ${color}66`;
+                    panel.style.borderColor = color;
+                } else {
+                    panel.style.boxShadow = '0 20px 50px rgba(0,0,0,0.4)';
+                    panel.style.borderColor = '#222a42';
+                }
+            } else if (systemState.ledMode === 'pulse') {
+                statusLed.innerText = 'CYAN PULSE PROFILE';
+                statusLed.style.color = 'var(--accent-cyan)';
+                ring.style.opacity = '0.8';
+                ring.style.border = '3px dashed var(--accent-cyan)';
+                panel.style.boxShadow = '0 0 30px var(--glow-cyan)';
+                panel.style.borderColor = 'var(--accent-cyan)';
+            } else if (systemState.ledMode === 'nebula') {
+                statusLed.innerText = 'NEBULA FREQUENCY GLOW';
+                statusLed.style.color = 'var(--accent-pink)';
+                ring.style.opacity = '0.9';
+                ring.style.border = '3px dotted var(--accent-pink)';
+                panel.style.boxShadow = '0 0 35px var(--glow-pink)';
+                panel.style.borderColor = 'var(--accent-pink)';
+            }
+        }
+
+        function updateControlGroupActive(clickedBtn) {
+            const row = clickedBtn.parentElement;
+            const buttons = row.getElementsByClassName('remote-btn');
+            for (let btn of buttons) {
+                btn.classList.remove('active');
+            }
+            clickedBtn.classList.add('active');
+        }
+
+        // Custom Overlay Modal Control Architectures
+        function openPreorderModal() {
+            document.getElementById('preorderModal').classList.add('active');
+            document.getElementById('modalFormState').style.display = 'block';
+            document.getElementById('modalSuccessState').style.display = 'none';
+            document.getElementById('subscriberEmail').value = '';
+        }
+
+        function closePreorderModal() {
+            document.getElementById('preorderModal').classList.remove('active');
+        }
+
+        function submitPreorderForm() {
+            const emailInput = document.getElementById('subscriberEmail');
+            if (emailInput.value && emailInput.checkValidity()) {
+                document.getElementById('modalFormState').style.display = 'none';
+                document.getElementById('modalSuccessState').style.display = 'block';
+            } else {
+                emailInput.focus();
+                emailInput.style.borderColor = 'var(--accent-pink)';
+            }
+        }
+    </script>
+</body>
+</html>
