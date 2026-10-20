@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stratus Smart Robe | The Future of Loungewear</title>
+    <title>Stratus Smart Robe | Air-layer concept</title>
     <style>
         :root {
-            --bg-color: #0d1210;
-            --card-bg: #151d19;
-            --panel-bg: #1b2620;
-            --accent-cyan: #8de2c1;
-            --accent-purple: #b8dfc4;
-            --accent-pink: #ff8770;
-            --accent-orange: #ffb454;
-            --text-main: #ffffff;
-            --text-muted: #8fa0b5;
-            --glow-cyan: rgba(141, 226, 193, 0.3);
-            --glow-pink: rgba(255, 135, 112, 0.35);
-            --glow-orange: rgba(255, 180, 84, 0.35);
+            --bg-color: #111411;
+            --card-bg: #191d18;
+            --panel-bg: #20251f;
+            --accent-cyan: #c8f078;
+            --accent-purple: #f0ac7a;
+            --accent-pink: #ff8873;
+            --accent-orange: #ffc36f;
+            --text-main: #f5f4ec;
+            --text-muted: #a8afa1;
+            --glow-cyan: rgba(200, 240, 120, 0.24);
+            --glow-pink: rgba(255, 136, 115, 0.24);
+            --glow-orange: rgba(255, 195, 111, 0.24);
         }
 
         * {
@@ -26,7 +26,7 @@
         }
 
         body {
-            font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+            font-family: 'Avenir Next', 'Trebuchet MS', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
@@ -112,6 +112,35 @@
             color: var(--accent-cyan);
         }
 
+        .site-tabs {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            gap: 4px;
+        }
+
+        .site-tabs a {
+            min-height: 42px;
+            padding: 0 14px;
+            border-bottom: 2px solid transparent;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .site-tabs a:hover,
+        .site-tabs a[aria-current="page"] {
+            color: var(--accent-cyan);
+            border-bottom-color: var(--accent-cyan);
+            background: rgba(200, 240, 120, 0.06);
+        }
+
+        .site-tabs a:focus-visible {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 2px;
+        }
+
         .cta-btn {
             background: var(--accent-cyan);
             color: #000000;
@@ -142,7 +171,7 @@
             padding: 132px 6% 64px;
             text-align: center;
             position: relative;
-            background: radial-gradient(ellipse at 50% 42%, #24372d 0%, #151e19 38%, var(--bg-color) 78%);
+            background: radial-gradient(ellipse at 50% 38%, #343a25 0%, #20251d 34%, var(--bg-color) 76%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -161,11 +190,11 @@
         }
 
         .hero-tag {
-            background: rgba(0, 242, 254, 0.1);
+            background: rgba(200, 240, 120, 0.09);
             border: 1px solid var(--accent-cyan);
             color: var(--accent-cyan);
             padding: 6px 16px;
-            border-radius: 20px;
+            border-radius: 4px;
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -174,23 +203,32 @@
         }
 
         .hero h1 {
-            font-size: 64px;
+            font-family: 'Avenir Next', 'Trebuchet MS', sans-serif;
+            font-size: 60px;
             font-weight: 800;
             margin: 0 0 24px 0;
-            letter-spacing: -1.5px;
+            letter-spacing: 0;
             line-height: 1.15;
             max-width: 900px;
-            background: linear-gradient(180deg, #ffffff 0%, #a5b4fc 100%);
+            background: linear-gradient(110deg, #ffffff 25%, var(--accent-cyan) 100%);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: hero-enter 700ms both;
         }
 
         .hero p {
             font-size: 20px;
             color: var(--text-muted);
-            max-width: 680px;
+            max-width: 620px;
             margin: 0 auto 45px auto;
             line-height: 1.6;
+            animation: hero-enter 700ms 100ms both;
+        }
+
+        @keyframes hero-enter {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-product {
@@ -309,10 +347,20 @@
             background-color: var(--card-bg);
             padding: 40px 30px;
             border-radius: 8px;
-            border: 1px solid #2a3830;
+            border: 1px solid #343b30;
             transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
+        }
+
+        .feature-card--air {
+            background: linear-gradient(135deg, #222a1d 0%, var(--card-bg) 72%);
+            border-color: rgba(200, 240, 120, 0.48);
+        }
+
+        .feature-card--air .feature-icon {
+            width: 46px;
+            height: 46px;
         }
 
         .feature-card:hover {
@@ -448,56 +496,29 @@
             pointer-events: none;
         }
 
-        .display-status-bar {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(120deg, transparent 35%, rgba(141, 226, 193, 0.035) 50%, transparent 65%);
+            opacity: 1;
+            pointer-events: none;
         }
 
-        .status-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .status-row:last-child {
-            margin-bottom: 0;
-        }
-
-        .status-label {
-            color: var(--text-muted);
-        }
-
-        .status-val {
-            font-weight: 700;
-            color: #ffffff;
-            transition: color 0.3s;
-        }
-
-        /* Remote Control Device UI */
-        .remote-device {
-            background: var(--panel-bg);
-            border: 1px solid #53675a;
-            border-radius: 22px;
-            padding: 28px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        .touchscreen-status {
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 18px;
-            padding: 0 2px 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: #dce7de;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 1px;
+        .hero-tag {
+            background: rgba(200, 240, 120, 0.09);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 12px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
         .remote-title {
@@ -544,8 +565,8 @@
 
         .remote-btn {
             flex: 1;
-            background: #222943;
-            border: 1px solid #3b4b40;
+            background: #292e27;
+            border: 1px solid #485044;
             color: var(--text-muted);
             padding: 12px 10px;
             border-radius: 8px;
@@ -557,7 +578,7 @@
         }
 
         .remote-btn:hover {
-            background: #2b3457;
+            background: #353c30;
             color: #ffffff;
         }
 
@@ -570,7 +591,7 @@
             background: var(--active-color, var(--accent-cyan));
             color: #000000;
             border-color: transparent;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 15px var(--glow-cyan);
             font-weight: 700;
         }
 
@@ -638,8 +659,8 @@
         .comparison-table-wrapper {
             width: 100%;
             overflow-x: auto;
-            border-radius: 20px;
-            border: 1px solid #1f2638;
+            border-radius: 6px;
+            border: 1px solid #343b30;
             background: var(--card-bg);
         }
 
@@ -652,11 +673,11 @@
 
         th, td {
             padding: 20px 25px;
-            border-bottom: 1px solid #1f2638;
+            border-bottom: 1px solid #343b30;
         }
 
         th {
-            background-color: #0f1220;
+            background-color: #20251f;
             font-weight: 700;
             font-size: 15px;
             text-transform: uppercase;
@@ -674,67 +695,61 @@
 
         /* Pricing Section */
         .pricing {
-            padding: 100px 6%;
+            padding: 90px 6%;
             text-align: center;
-            background: radial-gradient(circle at bottom, #12172b 0%, var(--bg-color) 70%);
+            background: radial-gradient(ellipse at 50% 100%, #292d20 0%, var(--bg-color) 68%);
         }
 
-        .price-box {
-            background: linear-gradient(135deg, var(--card-bg) 0%, #161c30 100%);
-            max-width: 480px;
+        .project-box {
+            background: linear-gradient(135deg, #22271f 0%, var(--card-bg) 100%);
+            max-width: 540px;
             margin: 40px auto 0 auto;
-            padding: 55px 40px;
-            border-radius: 36px;
-            border: 1px solid #627c69;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            padding: 44px 40px;
+            border-radius: 8px;
+            border: 1px solid #485044;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.35);
             position: relative;
         }
 
-        .badge-premium {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
-            color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 12px;
+        .project-status {
+            display: inline-block;
+            background: rgba(200, 240, 120, 0.1);
+            color: var(--accent-cyan);
+            padding: 6px 10px;
+            border-radius: 3px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(255, 0, 127, 0.3);
+            letter-spacing: 1.2px;
         }
 
-        .price-box h3 {
-            font-size: 26px;
-            margin: 0 0 15px 0;
-            letter-spacing: -0.5px;
+        .project-box h3 {
+            font-size: 28px;
+            margin: 16px 0 10px;
+            letter-spacing: 0;
         }
 
-        .price {
-            font-size: 56px;
-            font-weight: 800;
-            margin: 25px 0;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .price span {
-            font-size: 24px;
+        .project-box p {
             color: var(--text-muted);
-            text-decoration: line-through;
-            font-weight: 400;
+            margin: 0 0 24px;
         }
 
-        .price-currency {
-            font-size: 18px;
-            color: var(--accent-purple);
-            font-weight: 600;
-            margin-left: 5px;
+        .signup-message {
+            color: var(--accent-cyan);
+            margin: 24px auto 0;
+            max-width: 540px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Custom Modal Box Architecture */
@@ -753,6 +768,7 @@
             justify-content: center;
             opacity: 0;
             pointer-events: none;
+            visibility: hidden;
             transition: opacity 0.3s ease;
             padding: 20px;
         }
@@ -760,12 +776,13 @@
         .modal-overlay.active {
             opacity: 1;
             pointer-events: auto;
+            visibility: visible;
         }
 
         .modal-box {
             background: var(--panel-bg);
-            border: 2px solid #2e3859;
-            border-radius: 28px;
+            border: 1px solid #485044;
+            border-radius: 8px;
             width: 100%;
             max-width: 500px;
             padding: 40px;
@@ -817,9 +834,9 @@
 
         .form-input {
             width: 100%;
-            background: #0f1220;
-            border: 1px solid #2e3859;
-            border-radius: 12px;
+            background: #151914;
+            border: 1px solid #485044;
+            border-radius: 4px;
             padding: 14px 18px;
             color: #ffffff;
             font-size: 15px;
@@ -833,17 +850,13 @@
             box-shadow: 0 0 10px rgba(0, 242, 254, 0.15);
         }
 
-        .success-state {
-            display: none;
-        }
-
         footer {
             text-align: center;
             padding: 50px 4px;
             color: var(--text-muted);
             font-size: 14px;
-            border-top: 1px solid #161a27;
-            background-color: #05060a;
+            border-top: 1px solid #343b30;
+            background-color: #0c0f0c;
         }
 
         @media (max-width: 600px) {
@@ -894,14 +907,37 @@
             header {
                 padding: 15px 4%;
             }
-            nav {
-                display: none;
+            header {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                gap: 8px 12px;
             }
-            .price-box {
+            .site-tabs {
+                grid-column: 1 / -1;
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                width: 100%;
+            }
+            .site-tabs a {
+                min-width: 0;
+                padding: 0 4px;
+                font-size: 11px;
+                text-align: center;
+            }
+            .project-box {
                 padding: 40px 20px;
             }
-            .price {
-                font-size: 44px;
+            .modal-box {
+                padding: 36px 22px 24px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -913,19 +949,19 @@
             <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 14h20a5 5 0 1 0-5-5M5 21h27a5 5 0 1 1-5 5M5 28h17"/><path d="M9 9h3M13 33h4"/></svg>
             <span class="logo">STRATUS</span>
         </a>
-        <nav>
-            <a href="#features">Features</a>
-            <a href="#simulator">Touchscreen</a>
-            <a href="#specs">Specifications</a>
-            <a href="#faq">FAQ</a>
+        <nav class="site-tabs" aria-label="Website views">
+            <a href="#top" data-view="overview" aria-current="page">Overview</a>
+            <a href="#simulator" data-view="demo">Try it</a>
+            <a href="#faq" data-view="details">Details</a>
+            <a href="#preorder" data-view="updates">Updates</a>
         </nav>
-        <a href="#preorder" class="cta-btn">Pre-Order</a>
+        <a href="#preorder" class="cta-btn">Get updates</a>
     </header>
 
     <section class="hero">
-        <div class="hero-tag">Stratus Founder's Edition</div>
-        <h1>Comfort, tuned to you.</h1>
-        <p>A considered layer for winding down, with adjustable airflow, warmth, and an integrated sleeve touchscreen.</p>
+        <div class="hero-tag">Concept study</div>
+        <h1>The Stratus Smart Robe</h1>
+        <p>A soft layer with a little more control. The concept pairs inflatable air chambers for adjustable loft with a sleeve-mounted comfort interface.</p>
         <div class="hero-product" role="img" aria-label="Stratus robe concept showing an integrated touchscreen controller mounted on the sleeve">
             <svg class="hero-robe" viewBox="0 0 300 320" aria-hidden="true">
                 <path class="robe-shell" d="M112 30 80 43 44 74 69 132 91 117 79 282 Q150 306 221 282 L209 117 231 132 256 74 220 43 188 30 150 70Z"/>
@@ -936,12 +972,6 @@
                 <rect x="205" y="143" width="20" height="33" rx="4" fill="#243b30"/>
                 <circle cx="215" cy="151" r="4" fill="#8de2c1"/>
                 <path d="M210 160h10m-10 5h10m-10 5h7" stroke="#d6e2d8" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <svg class="hero-remote" viewBox="0 0 180 220" aria-label="Magnified touchscreen interface">
-                <rect x="12" y="8" width="156" height="204" rx="24" fill="#0d1510" stroke="#9ab5a0" stroke-width="2"/>
-                <rect x="21" y="18" width="138" height="184" rx="17" fill="#17251c"/>
-                <path d="M39 40h31m-31 7h20" stroke="#91a998" stroke-width="3" stroke-linecap="round"/>
-                <circle cx="139" cy="42" r="5" fill="#8de2c1"/>
                 <text x="36" y="79" fill="#a7b8aa" font-size="9" font-family="sans-serif" letter-spacing="1">CLIMATE</text>
                 <text x="35" y="110" fill="#f3f6f2" font-size="27" font-family="sans-serif" font-weight="700">COOL</text>
                 <text x="37" y="128" fill="#8de2c1" font-size="10" font-family="sans-serif">ECO MODE</text>
@@ -956,33 +986,38 @@
             <div class="touchscreen-callout"><strong>Built into the sleeve</strong><span>A color touchscreen puts climate and comfort controls right where you need them.</span></div>
             <span class="hero-caption">Concept render · details subject to change</span>
         </div>
-        <a href="#preorder" class="cta-btn">Secure Your Launch Discount</a>
+        <a href="#features" class="cta-btn">Explore the features</a>
     </section>
 
     <section class="features-container" id="features">
-        <h2 class="section-title">Engineered for Absolute Comfort</h2>
-        <p class="section-subtitle">Fusing high-performance techwear fabrics with ambient hardware intelligence.</p>
+        <h2 class="section-title">Comfort, with more control</h2>
+        <p class="section-subtitle">A concept robe built around adjustable air chambers, climate controls, and a sleeve-mounted interface.</p>
 
         <div class="features">
+            <div class="feature-card feature-card--air">
+                <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="11" width="30" height="18" rx="9"/><path d="M12 20h16M20 6v5m0 18v5M8 7l4 4m16 18 4 4m0-26-4 4M12 29l-4 4"/><path d="m17 17 3-3 3 3m-6 6 3 3 3-3"/></svg>
+                <h3>Inflatable air chambers</h3>
+                <p>Air chambers between fabric layers add adjustable loft. Select a fuller or flatter feel in the concept controls; the chamber design is still in development.</p>
+            </div>
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 14h18a5 5 0 1 0-5-5M5 21h27a5 5 0 1 1-5 5M5 28h16"/><path d="M10 9h3M13 33h4"/></svg>
-                <h3>Micro-Blower AC</h3>
-                <p>Dual ultra-quiet brushless fans circulate crisp, refreshing air through a specialized internal air-layer to prevent sweat and fabric adhesion.</p>
+                <h3>Airflow concept</h3>
+                <p>The design explores small fans and internal channels to move air through the garment. Cooling and noise performance have not been tested.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 24V16a12 12 0 0 1 24 0v8M8 20H5v8h7v-8zm24 0h3v8h-7v-8zM16 31c2 2 6 2 8 0"/></svg>
-                <h3>Spatial Audio Collar</h3>
-                <p>Thin, flexible bone-conduction panels embedded in the collar create a private audio bubble without the need for isolating earbuds.</p>
+                <h3>Open-ear audio concept</h3>
+                <p>A proposed collar audio system aims to keep ears uncovered. The speaker design and sound quality are not finalized.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="m20 4 3.5 11.5L35 19l-11.5 3.5L20 34l-3.5-11.5L5 19l11.5-3.5z"/><path d="m32 27 1.5 4.5L38 33l-4.5 1.5L32 39l-1.5-4.5L26 33l4.5-1.5z"/></svg>
-                <h3>Reactive Nebula LEDs</h3>
-                <p>Embedded NeoPixel light strips diffuse glowing ambient lighting through a frosted mesh shell, pulsing seamlessly to sound frequencies.</p>
+                <h3>Ambient lighting concept</h3>
+                <p>Optional low-profile lighting could add a soft ambient glow. Placement, controls, and power needs are still being explored.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="5" width="26" height="30" rx="8"/><path d="M14 15h12M14 21h12M14 27h7"/><circle cx="27" cy="27" r="2"/></svg>
-                <h3>Built-in Sleeve Touchscreen</h3>
-                <p>Tap the color touchscreen integrated into the robe's sleeve to adjust climate levels, airflow, audio, and lighting.</p>
+                <h3>Sleeve-mounted controls</h3>
+                <p>A proposed color interface puts air-chamber and comfort settings within reach. The simulator below is illustrative, not connected to hardware.</p>
             </div>
         </div>
     </section>
@@ -990,7 +1025,7 @@
     <!-- Interactive Simulator Module -->
     <section class="simulator-section" id="simulator">
         <h2 class="section-title">Experience the Interface</h2>
-        <p class="section-subtitle">Preview the integrated sleeve touchscreen and tap its controls to adjust the robe.</p>
+        <p class="section-subtitle">Try the proposed controls. This click-through preview is illustrative and does not control physical hardware.</p>
 
         <div class="simulator-container">
             <!-- Left Side: Live Preview Panel -->
@@ -1010,11 +1045,11 @@
 
                 <div class="display-status-bar">
                     <div class="status-row">
-                        <span class="status-label">Climate Control:</span>
+                        <span class="status-label">Climate mode:</span>
                         <span class="status-val" id="statusClimate">COLD - OFF</span>
                     </div>
                     <div class="status-row">
-                        <span class="status-label">Layered Insulation:</span>
+                        <span class="status-label">Air chamber loft:</span>
                         <span class="status-val" id="statusInsulation">OFF</span>
                     </div>
                     <div class="status-row">
@@ -1036,10 +1071,10 @@
 
                 <!-- Climate Mode & Level Zone -->
                 <div class="control-group">
-                    <span class="control-label">Climate Element Target</span>
+                    <span class="control-label">Climate mode (simulated)</span>
                     <div class="btn-row" style="margin-bottom: 10px;">
-                        <button class="remote-btn active" id="modeCold" onclick="setClimateMode('cold')">Cold (AC)</button>
-                        <button class="remote-btn" id="modeHot" onclick="setClimateMode('hot')">Hot (Thermal)</button>
+                        <button class="remote-btn active" id="modeCold" aria-pressed="true" onclick="setClimateMode('cold')">Cool concept</button>
+                        <button class="remote-btn" id="modeHot" aria-pressed="false" onclick="setClimateMode('hot')">Warm concept</button>
                     </div>
                     <span class="control-label">Intensity Level</span>
                     <div class="btn-row">
@@ -1050,14 +1085,14 @@
                     </div>
                 </div>
 
-                <!-- Inflatable Insulation Zone -->
+                <!-- Inflatable air chamber controls -->
                 <div class="control-group">
-                    <span class="control-label">Layered Inflatable Insulation</span>
+                    <span class="control-label">Inflatable air chamber loft</span>
                     <div class="btn-row">
-                        <button class="remote-btn active" onclick="setInsulation('off', this)">Off</button>
-                        <button class="remote-btn" onclick="setInsulation('lvl1', this)">Lvl 1</button>
-                        <button class="remote-btn" onclick="setInsulation('lvl2', this)">Lvl 2</button>
-                        <button class="remote-btn" onclick="setInsulation('max', this)">Max</button>
+                        <button class="remote-btn active" aria-pressed="true" onclick="setInsulation('off', this)">Flat</button>
+                        <button class="remote-btn" aria-pressed="false" onclick="setInsulation('lvl1', this)">Low</button>
+                        <button class="remote-btn" aria-pressed="false" onclick="setInsulation('lvl2', this)">Medium</button>
+                        <button class="remote-btn" aria-pressed="false" onclick="setInsulation('max', this)">Full</button>
                     </div>
                 </div>
 
@@ -1065,17 +1100,17 @@
                 <div class="control-group">
                     <span class="control-label">Nebula LED Profiles</span>
                     <div class="btn-row">
-                        <button class="remote-btn active" onclick="setLed('off', this)">No LED (Off)</button>
-                        <button class="remote-btn" onclick="setLed('pulse', this)">Cyan Pulse</button>
-                        <button class="remote-btn" onclick="setLed('nebula', this)">Nebula Glow</button>
+                        <button class="remote-btn active" aria-pressed="true" onclick="setLed('off', this)">Off</button>
+                        <button class="remote-btn" aria-pressed="false" onclick="setLed('pulse', this)">Pulse</button>
+                        <button class="remote-btn" aria-pressed="false" onclick="setLed('nebula', this)">Glow</button>
                     </div>
                 </div>
 
                 <!-- Audio Environment Zone -->
                 <div class="control-group">
-                    <span class="control-label">Audio Environment Connection</span>
+                    <span class="control-label">Audio connection demo</span>
                     <div class="btn-row">
-                        <button class="remote-btn" id="bluetoothBtn" onclick="triggerBluetoothPairing()" style="border-color: #3b82f6;">Connect Bluetooth</button>
+                        <button class="remote-btn" id="bluetoothBtn" aria-pressed="false" onclick="triggerBluetoothPairing()">Simulate Bluetooth</button>
                     </div>
                 </div>
             </div>
@@ -1087,59 +1122,63 @@
         <p class="section-subtitle">Practical details for everyday care and use.</p>
         <div class="faq-list">
             <details>
+                <summary>How do the inflatable air chambers work?</summary>
+                <p>They are a proposed way to adjust the robe's loft by changing the amount of air held between fabric layers. The chamber layout and inflation method are still being developed.</p>
+            </details>
+            <details>
                 <summary>Can I wash the robe?</summary>
-                <p>The robe is being designed with removable electronics and battery components. Remove all electronic modules before cleaning; final wash instructions will be provided with the production garment.</p>
+                <p>Care instructions are not finalized. If the concept advances, removable electronics and a clear cleaning process will be part of the design requirements.</p>
             </details>
             <details>
-                <summary>How long does the battery last?</summary>
-                <p>The concept includes a 10,000 mAh USB-C power bank. Runtime depends on the selected climate and lighting settings, and has not yet been finalized.</p>
+                <summary>Is the robe available to order?</summary>
+                <p>No. This is an early concept, not a product listing. The page does not accept orders or payments.</p>
             </details>
             <details>
-                <summary>How much does it weigh?</summary>
-                <p>Final product weight is still being determined as the garment and hardware are refined. A verified weight will be shared before production.</p>
+                <summary>What are the battery life and weight?</summary>
+                <p>Neither is confirmed. Both will depend on the final garment, air system, and electronics.</p>
             </details>
         </div>
     </section>
 
     <!-- Specs Comparison Matrix -->
     <section class="specs-section" id="specs">
-        <h2 class="section-title">How It Compares</h2>
-        <p class="section-subtitle">Traditional loungewear vs. modern proactive comfort hardware architecture.</p>
+        <h2 class="section-title">Concept at a glance</h2>
+        <p class="section-subtitle">A comparison of proposed ideas, not finalized or tested product specifications.</p>
 
         <div class="comparison-table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>Feature Specification</th>
-                        <th>Standard Premium Robe</th>
-                        <th>Stratus Founder's Edition</th>
+                        <th>Feature</th>
+                        <th>Traditional robe</th>
+                        <th>Stratus concept</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Climate Regulation</td>
-                        <td>Passive insulation (Trap heat/sweat)</td>
-                        <td class="highlight">Active dual brushless induction cooling</td>
+                        <td>Air chambers</td>
+                        <td>Not typically adjustable</td>
+                        <td class="highlight">Inflatable chambers for adjustable loft</td>
                     </tr>
                     <tr>
-                        <td>Acoustic Architecture</td>
-                        <td>None (Requires separate headphones)</td>
-                        <td class="highlight">Integrated open-ear bone conduction collar</td>
+                        <td>Comfort settings</td>
+                        <td>Fabric and fit</td>
+                        <td class="highlight">Proposed sleeve-mounted controls</td>
                     </tr>
                     <tr>
-                        <td>Visual Personalization</td>
-                        <td>Static single fabric color</td>
-                        <td class="highlight">NeoPixel mesh arrays with reactive logic</td>
+                        <td>Airflow</td>
+                        <td>Natural ventilation</td>
+                        <td class="highlight">Airflow system under exploration</td>
                     </tr>
                     <tr>
-                        <td>Power Distribution</td>
-                        <td>N/A</td>
-                        <td class="highlight">10,000mAh magnetic quick-snap power bank</td>
+                        <td>Audio and lighting</td>
+                        <td>Separate accessories</td>
+                        <td class="highlight">Optional concepts; details unconfirmed</td>
                     </tr>
                     <tr>
-                        <td>Control Interface</td>
-                        <td>Manual cloth belt tie</td>
-                        <td class="highlight">Integrated sleeve-mounted color touchscreen</td>
+                        <td>Product status</td>
+                        <td>Available products</td>
+                        <td class="highlight">Early concept, in development</td>
                     </tr>
                 </tbody>
             </table>
@@ -1148,42 +1187,38 @@
 
     <!-- Pricing / Preorder Segment -->
     <section class="pricing" id="preorder">
-        <h2>Exclusive Crowdfunding Offer</h2>
-        <p>Join the inner circle. Gain early manufacturing sequence allocation before global retail rates go live.</p>
-        <div class="price-box">
-            <div class="badge-premium">Early Bird Launch Allocation</div>
-            <h3>Stratus Founder's Edition</h3>
-            <div class="price"><span>$450</span>$299 <span class="price-currency">USD</span></div>
-            <p style="color: var(--text-muted); margin-bottom: 35px; font-size: 14px; line-height: 1.5;">Includes Smart Robe assembly with integrated sleeve touchscreen and a USB-C power bank.</p>
-            <button class="cta-btn" style="width: 100%; padding: 16px;" onclick="openPreorderModal()">Reserve My Spot</button>
+        <h2 class="section-title">Follow the project</h2>
+        <p class="section-subtitle">The Stratus Smart Robe is a concept in development. Get occasional project updates; there is no preorder or payment.</p>
+        <div class="project-box">
+            <span class="project-status">Early concept</span>
+            <h3>Get project updates</h3>
+            <p>Join the update list to follow the air-chamber design and other ideas as they develop.</p>
+            <button class="cta-btn" style="width: 100%; padding: 16px;" onclick="openPreorderModal()">Join the update list</button>
         </div>
+        <p class="signup-message" id="signupMessage" role="status" hidden>Thanks for signing up. Your email was sent to the project inbox; no order or payment was made.</p>
     </section>
 
     <footer>
-        &copy; 2026 Stratus Techwear Inc. All rights reserved. Designed for the futuristic lounger ecosystem.
+        &copy; 2026 Stratus Smart Robe concept. Product details are illustrative and may change.
     </footer>
 
-    <!-- Futuristic Custom Dialogue Overlays (No Alert Blocks) -->
-    <div class="modal-overlay" id="preorderModal">
+    <div class="modal-overlay" id="preorderModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
         <div class="modal-box">
-            <button class="close-modal-btn" onclick="closePreorderModal()">&times;</button>
+            <button class="close-modal-btn" aria-label="Close dialog" onclick="closePreorderModal()">&times;</button>
 
-            <!-- Default Sign Up Form Layout -->
             <div id="modalFormState">
                 <svg class="modal-icon feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M21 5c7 2 11 8 12 15l-9 9-9-9c1-7 5-13 6-15z"/><path d="m15 20-7 2-3 7 10-3m10 0 3 8 5-5-2-7M19 14h.1"/><circle cx="21" cy="14" r="2"/></svg>
-                <h3>Secure Launch Priority</h3>
-                <p>Early bird slots are limited. Enter your email to receive an instant direct mint notification and lock in your \$299 launch price point before retail release.</p>
-                <input type="email" class="form-input" id="subscriberEmail" placeholder="Enter your matrix address (Email)" required>
-                <button class="cta-btn" style="width: 100%; padding: 14px;" onclick="submitPreorderForm()">Authorize Spot Reservation</button>
-            </div>
-
-            <!-- Interactive Success State Layout -->
-            <div id="modalSuccessState" class="success-state">
-                <svg class="modal-icon feature-icon" style="color: var(--accent-cyan)" viewBox="0 0 40 40" aria-hidden="true"><path d="M22 3 9 22h9l-1 15 14-21h-9z"/></svg>
-                <h3>Reservation Confirmed</h3>
-                <p style="color: #ffffff; font-weight: 600;">Welcome to the Inner Circle.</p>
-                <p>Your allocation has been cached. A manufacturing timeline map and early confirmation hash have been transmitted to your provided address.</p>
-                <button class="cta-btn" style="width: 100%; padding: 12px; background: #222943; color: #fff;" onclick="closePreorderModal()">Exit Interface</button>
+                <h3 id="modalTitle">Get project updates</h3>
+                <p>Leave your email to follow the concept as it develops. This is an update list only; no order or payment is taken.</p>
+                <form id="updatesForm" action="https://formsubmit.co/1yaoeth@hdsb.ca" method="POST">
+                    <input type="hidden" name="_subject" value="Stratus Smart Robe project update signup">
+                    <input type="hidden" name="_autoresponse" value="Thanks for following the Stratus Smart Robe concept. This is an update list only; no order or payment was taken.">
+                    <input type="hidden" name="_next" value="https://ethanyaozers.github.io/Stratus-Smart-Robe/?signup=success#preorder">
+                    <label class="sr-only" for="subscriberEmail">Email address</label>
+                    <input type="email" class="form-input" id="subscriberEmail" name="email" placeholder="Email address" autocomplete="email" required>
+                    <button class="cta-btn" style="width: 100%; padding: 14px;" type="submit">Join the update list</button>
+                </form>
+                <p style="font-size: 12px; margin: 12px 0 0;">Your email is sent to the project inbox via FormSubmit. No purchase or payment is taken.</p>
             </div>
         </div>
     </div>
@@ -1193,7 +1228,7 @@
         let systemState = {
             climateMode: 'cold',  // 'cold' or 'hot'
             climateLevel: 'off',  // 'off', 'low', 'med', 'high'
-            insulation: 'off',    // 'off', 'lvl1', 'lvl2', 'max'
+            airLoft: 'off',       // 'off', 'lvl1', 'lvl2', 'max'
             ledMode: 'off',       // 'off', 'pulse', 'nebula'
             bluetooth: 'disconnected' // 'disconnected', 'pairing', 'connected'
         };
@@ -1218,6 +1253,8 @@
                 hotBtn.classList.remove('active');
                 coldBtn.classList.remove('active', 'active-warm');
             }
+            coldBtn.setAttribute('aria-pressed', String(mode === 'cold'));
+            hotBtn.setAttribute('aria-pressed', String(mode === 'hot'));
 
             document.getElementById('robePanel').dataset.mode = mode;
 
@@ -1260,7 +1297,7 @@
         }
 
         function setInsulation(level, element) {
-            systemState.insulation = level;
+            systemState.airLoft = level;
             updateControlGroupActive(element);
 
             const robeIcon = document.getElementById('robeIcon');
@@ -1270,13 +1307,13 @@
                 document.getElementById('statusInsulation').innerText = 'OFF';
                 robeIcon.style.transform = 'scale(1)';
             } else if (level === 'lvl1') {
-                document.getElementById('statusInsulation').innerText = 'LEVEL 1 (LAYERED)';
+                document.getElementById('statusInsulation').innerText = 'LOW LOFT (SIMULATED)';
                 robeIcon.style.transform = 'scale(1.04)';
             } else if (level === 'lvl2') {
-                document.getElementById('statusInsulation').innerText = 'LEVEL 2 (DYNAMIC)';
+                document.getElementById('statusInsulation').innerText = 'MEDIUM LOFT (SIMULATED)';
                 robeIcon.style.transform = 'scale(1.08)';
             } else if (level === 'max') {
-                document.getElementById('statusInsulation').innerText = 'MAX INFLATION';
+                document.getElementById('statusInsulation').innerText = 'FULL LOFT (SIMULATED)';
                 robeIcon.style.transform = 'scale(1.13)';
             }
         }
@@ -1298,6 +1335,7 @@
                 btBtn.style.background = '#222943';
                 btBtn.style.color = 'var(--text-muted)';
                 btBtn.style.boxShadow = 'none';
+                btBtn.setAttribute('aria-pressed', 'false');
                 btStatus.innerText = 'DISCONNECTED';
                 btStatus.style.color = '#ffffff';
                 return;
@@ -1305,19 +1343,22 @@
 
             // Simulate Pairing States
             systemState.bluetooth = 'pairing';
-            btBtn.innerText = 'Pairing...';
+            btBtn.innerText = 'Simulating...';
             btBtn.disabled = true;
-            btStatus.innerText = 'SEARCHING FOR PAIRING HARMONICS...';
+            btBtn.setAttribute('aria-busy', 'true');
+            btStatus.innerText = 'SIMULATING PAIRING...';
             btStatus.style.color = 'var(--accent-purple)';
 
             setTimeout(() => {
                 systemState.bluetooth = 'connected';
                 btBtn.disabled = false;
-                btBtn.innerText = 'Disconnect Audio';
+                btBtn.removeAttribute('aria-busy');
+                btBtn.setAttribute('aria-pressed', 'true');
+                btBtn.innerText = 'Disconnect demo';
                 btBtn.style.background = 'linear-gradient(45deg, #2563eb, #3b82f6)';
                 btBtn.style.color = '#ffffff';
                 btBtn.style.boxShadow = '0 0 15px rgba(59, 130, 246, 0.4)';
-                btStatus.innerText = 'CONNECTED (BLUETOOTH AUDIO STREAM UP)';
+                btStatus.innerText = 'DEMO CONNECTION ACTIVE';
                 btStatus.style.color = '#10b981';
             }, 1400);
         }
@@ -1420,32 +1461,111 @@
             const buttons = row.getElementsByClassName('remote-btn');
             for (let btn of buttons) {
                 btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
             }
             clickedBtn.classList.add('active');
+            clickedBtn.setAttribute('aria-pressed', 'true');
         }
 
         // Custom Overlay Modal Control Architectures
+        let preorderTrigger = null;
+
         function openPreorderModal() {
+            preorderTrigger = document.activeElement;
             document.getElementById('preorderModal').classList.add('active');
-            document.getElementById('modalFormState').style.display = 'block';
-            document.getElementById('modalSuccessState').style.display = 'none';
             document.getElementById('subscriberEmail').value = '';
+            document.getElementById('subscriberEmail').focus();
         }
 
         function closePreorderModal() {
             document.getElementById('preorderModal').classList.remove('active');
+            if (preorderTrigger) preorderTrigger.focus();
         }
 
-        function submitPreorderForm() {
-            const emailInput = document.getElementById('subscriberEmail');
-            if (emailInput.value && emailInput.checkValidity()) {
-                document.getElementById('modalFormState').style.display = 'none';
-                document.getElementById('modalSuccessState').style.display = 'block';
-            } else {
-                emailInput.focus();
-                emailInput.style.borderColor = 'var(--accent-pink)';
+        const preorderModal = document.getElementById('preorderModal');
+        preorderModal.addEventListener('click', (event) => {
+            if (event.target === preorderModal) closePreorderModal();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (!preorderModal.classList.contains('active')) return;
+
+            if (event.key === 'Escape') {
+                closePreorderModal();
+                return;
             }
+
+            if (event.key === 'Tab') {
+                const controls = preorderModal.querySelectorAll('button:not([disabled]), input:not([disabled])');
+                const firstControl = controls[0];
+                const lastControl = controls[controls.length - 1];
+
+                if (event.shiftKey && document.activeElement === firstControl) {
+                    event.preventDefault();
+                    lastControl.focus();
+                } else if (!event.shiftKey && document.activeElement === lastControl) {
+                    event.preventDefault();
+                    firstControl.focus();
+                }
+            }
+        });
+
+        if (new URLSearchParams(window.location.search).get('signup') === 'success') {
+            document.getElementById('signupMessage').hidden = false;
         }
+
+        const siteViews = {
+            overview: [document.querySelector('.hero'), document.getElementById('features')],
+            demo: [document.getElementById('simulator')],
+            details: [document.getElementById('faq'), document.getElementById('specs')],
+            updates: [document.getElementById('preorder')]
+        };
+        const viewLinks = document.querySelectorAll('.site-tabs [data-view]');
+
+        function showSiteView(viewName, updateHistory = false) {
+            const selectedView = siteViews[viewName] ? viewName : 'overview';
+
+            for (const [name, sections] of Object.entries(siteViews)) {
+                for (const section of sections) section.hidden = name !== selectedView;
+            }
+
+            for (const link of viewLinks) {
+                if (link.dataset.view === selectedView) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            }
+
+            if (updateHistory) {
+                const activeLink = document.querySelector(`.site-tabs [data-view="${selectedView}"]`);
+                history.pushState({ view: selectedView }, '', activeLink.href);
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        function viewFromHash() {
+            const hash = window.location.hash;
+            if (hash === '#simulator') return 'demo';
+            if (hash === '#faq' || hash === '#specs') return 'details';
+            if (hash === '#preorder') return 'updates';
+            return 'overview';
+        }
+
+        for (const link of viewLinks) {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                showSiteView(link.dataset.view, true);
+            });
+        }
+
+        document.querySelectorAll('a[href="#preorder"]:not([data-view])').forEach((link) => {
+            link.addEventListener('click', () => showSiteView('updates'));
+        });
+
+        window.addEventListener('popstate', () => showSiteView(viewFromHash()));
+        showSiteView(viewFromHash());
     </script>
 </body>
 </html>
