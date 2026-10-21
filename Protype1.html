@@ -6,18 +6,27 @@
     <title>Stratus Smart Robe | The Future of Loungewear</title>
     <style>
         :root {
+            --bg-color: #101923;
+            --card-bg: #192633;
+            --panel-bg: #223342;
+            --accent-cyan: #7ed8e8;
+            --accent-purple: #b1c8ef;
+            --accent-pink: #ff8770;
+            --accent-orange: #ffb454;
+            --text-main: #ffffff;
+            --text-muted: #a0b2c2;
+            --glow-cyan: rgba(141, 226, 193, 0.3);
+            --glow-pink: rgba(255, 135, 112, 0.35);
+            --glow-orange: rgba(255, 180, 84, 0.35);
+        }
+
+        body[data-theme="forest"] {
             --bg-color: #14372f;
             --card-bg: #1c493b;
             --panel-bg: #285b4a;
             --accent-cyan: #8de2c1;
             --accent-purple: #b8dfc4;
-            --accent-pink: #ff8770;
-            --accent-orange: #ffb454;
-            --text-main: #ffffff;
             --text-muted: #8fa0b5;
-            --glow-cyan: rgba(141, 226, 193, 0.3);
-            --glow-pink: rgba(255, 135, 112, 0.35);
-            --glow-orange: rgba(255, 180, 84, 0.35);
         }
 
         body[data-theme="ocean"] {
@@ -880,8 +889,8 @@
         <label class="theme-control" for="pageTheme">
             <span>Background</span>
             <select id="pageTheme" aria-label="Choose a page color theme">
+                <option value="ocean" selected>Ocean</option>
                 <option value="forest">Forest</option>
-                <option value="ocean">Ocean</option>
                 <option value="plum">Plum</option>
                 <option value="graphite">Graphite</option>
             </select>
