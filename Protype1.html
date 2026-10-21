@@ -20,6 +20,33 @@
             --glow-orange: rgba(255, 180, 84, 0.35);
         }
 
+        body[data-theme="ocean"] {
+            --bg-color: #101923;
+            --card-bg: #192633;
+            --panel-bg: #223342;
+            --accent-cyan: #7ed8e8;
+            --accent-purple: #b1c8ef;
+            --text-muted: #a0b2c2;
+        }
+
+        body[data-theme="plum"] {
+            --bg-color: #20151d;
+            --card-bg: #2b1d29;
+            --panel-bg: #392638;
+            --accent-cyan: #f1a9cb;
+            --accent-purple: #e5b5e8;
+            --text-muted: #c0a9bb;
+        }
+
+        body[data-theme="graphite"] {
+            --bg-color: #181a1a;
+            --card-bg: #222626;
+            --panel-bg: #303636;
+            --accent-cyan: #b8d7c5;
+            --accent-purple: #d0d9c5;
+            --text-muted: #b1b9b5;
+        }
+
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
@@ -55,7 +82,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 6%;
-            background: rgba(13, 18, 16, 0.9);
+            background: color-mix(in srgb, var(--bg-color) 90%, transparent);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             position: fixed;
@@ -120,12 +147,32 @@
             transform: translateY(0);
         }
 
+        .theme-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .theme-control select {
+            max-width: 130px;
+            padding: 8px 28px 8px 10px;
+            border: 1px solid color-mix(in srgb, var(--accent-cyan) 45%, transparent);
+            border-radius: 6px;
+            background: var(--card-bg);
+            color: var(--text-main);
+            font: inherit;
+            cursor: pointer;
+        }
+
         .hero {
             min-height: min(900px, 100svh);
             padding: 132px 6% 64px;
             text-align: center;
             position: relative;
-            background: radial-gradient(ellipse at 50% 42%, #24372d 0%, #151e19 38%, var(--bg-color) 78%);
+            background: radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--accent-cyan) 16%, var(--bg-color)) 0%, var(--card-bg) 38%, var(--bg-color) 78%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -138,7 +185,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(120deg, transparent 35%, rgba(141, 226, 193, 0.035) 50%, transparent 65%);
+            background-image: linear-gradient(120deg, transparent 35%, color-mix(in srgb, var(--accent-cyan) 5%, transparent) 50%, transparent 65%);
             opacity: 1;
             pointer-events: none;
         }
@@ -249,7 +296,7 @@
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 30px;
         }
 
@@ -257,7 +304,7 @@
             background-color: var(--card-bg);
             padding: 40px 30px;
             border-radius: 8px;
-            border: 1px solid #2a3830;
+            border: 1px solid color-mix(in srgb, var(--accent-cyan) 20%, var(--card-bg));
             transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
@@ -299,7 +346,7 @@
         /* Interactive Simulator Section */
         .simulator-section {
             padding: 90px 6%;
-            background: linear-gradient(180deg, var(--bg-color) 0%, #131b16 50%, var(--bg-color) 100%);
+            background: linear-gradient(180deg, var(--bg-color) 0%, var(--card-bg) 50%, var(--bg-color) 100%);
         }
 
         .simulator-container {
@@ -765,7 +812,7 @@
             color: var(--text-muted);
             font-size: 14px;
             border-top: 1px solid #161a27;
-            background-color: #05060a;
+            background-color: color-mix(in srgb, var(--bg-color) 75%, black);
         }
 
         @media (max-width: 600px) {
@@ -799,6 +846,15 @@
             header {
                 padding: 15px 4%;
             }
+            .theme-control span {
+                display: none;
+            }
+            .theme-control select {
+                max-width: 105px;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
             nav {
                 display: none;
             }
@@ -821,6 +877,15 @@
             <a href="#specs">Specifications</a>
             <a href="#faq">FAQ</a>
         </nav>
+        <label class="theme-control" for="pageTheme">
+            <span>Background</span>
+            <select id="pageTheme" aria-label="Choose a page color theme">
+                <option value="forest">Forest</option>
+                <option value="ocean">Ocean</option>
+                <option value="plum">Plum</option>
+                <option value="graphite">Graphite</option>
+            </select>
+        </label>
         <a href="#preorder" class="cta-btn">Pre-Order</a>
     </header>
 
@@ -1335,6 +1400,18 @@
         function closePreorderModal() {
             document.getElementById('preorderModal').classList.remove('active');
         }
+
+        const pageTheme = document.getElementById('pageTheme');
+        const savedTheme = localStorage.getItem('stratus-page-theme');
+        const availableThemes = ['forest', 'ocean', 'plum', 'graphite'];
+        if (availableThemes.includes(savedTheme)) {
+            document.body.dataset.theme = savedTheme;
+            pageTheme.value = savedTheme;
+        }
+        pageTheme.addEventListener('change', () => {
+            document.body.dataset.theme = pageTheme.value;
+            localStorage.setItem('stratus-page-theme', pageTheme.value);
+        });
 
         if (new URLSearchParams(window.location.search).get('preorder') === 'success') {
             showPreorderSuccess();
