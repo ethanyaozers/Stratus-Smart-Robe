@@ -158,21 +158,41 @@
 
         nav {
             display: flex;
-            gap: 30px;
+            gap: 4px;
+            justify-content: center;
+            flex: 1;
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.3s;
-            font-size: 15px;
+            font-size: 13px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 0 10px;
         }
 
         nav a:hover {
             color: var(--accent-cyan);
+        }
+
+        nav a[aria-current="page"] {
+            color: var(--accent-cyan);
+            border-bottom: 2px solid var(--accent-cyan);
+            background: color-mix(in srgb, var(--accent-cyan) 7%, transparent);
+        }
+
+        nav a:focus-visible {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 2px;
+        }
+
+        [data-page][hidden] {
+            display: none !important;
         }
 
         .cta-btn {
@@ -627,6 +647,102 @@
             margin: 0 auto;
         }
 
+        .business-section {
+            padding: 90px 6%;
+            max-width: 1120px;
+            margin: 0 auto;
+            min-height: 70vh;
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .business-block {
+            padding: 26px;
+            background: var(--card-bg);
+            border: 1px solid color-mix(in srgb, var(--accent-cyan) 20%, var(--card-bg));
+            border-radius: 8px;
+        }
+
+        .business-block h3 {
+            margin: 0 0 10px;
+            color: var(--accent-cyan);
+            font-size: 19px;
+        }
+
+        .business-block p,
+        .business-block li {
+            color: var(--text-muted);
+        }
+
+        .business-callout {
+            margin: 24px 0;
+            padding: 18px 22px;
+            border-left: 3px solid var(--accent-orange);
+            background: color-mix(in srgb, var(--accent-orange) 8%, var(--card-bg));
+            color: var(--text-muted);
+        }
+
+        .business-callout strong {
+            color: var(--text-main);
+        }
+
+        .projection-frame {
+            width: 100%;
+            height: 560px;
+            border: 1px solid color-mix(in srgb, var(--accent-cyan) 30%, var(--card-bg));
+            background: #ffffff;
+        }
+
+        .brand-assets {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            gap: 24px;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: block;
+            width: min(100%, 380px);
+            margin: 0 auto;
+            background: #000000;
+        }
+
+        .business-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .business-links a {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .business-table {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .business-table th,
+        .business-table td {
+            padding: 14px 16px;
+        }
+
+        .order-details {
+            max-width: 760px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+
+        .order-details .business-block {
+            margin-top: 16px;
+        }
+
         .faq-section {
             padding: 76px 6% 90px;
             background: var(--card-bg);
@@ -873,6 +989,19 @@
                 font-size: 40px;
             }
             .hero p {
+
+            header {
+                display: grid;
+                grid-template-columns: 1fr auto auto;
+                gap: 8px 12px;
+            }
+
+            header nav {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                justify-content: space-between;
+                width: 100%;
+            }
                 font-size: 17px;
             }
             .hero-product {
@@ -912,11 +1041,57 @@
             .features {
                 grid-template-columns: 1fr;
             }
-            nav {
+
+            .business-grid,
+            .brand-assets {
+                grid-template-columns: 1fr;
+            }
+
+            .business-section {
+                padding: 70px 5%;
+            }
+
+            header {
+                grid-template-columns: 1fr auto;
+                gap: 8px;
+            }
+
+            header .theme-control {
                 display: none;
             }
+
+            header nav {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                grid-column: 1 / -1;
+                grid-row: 2;
+                gap: 0;
+            }
+
+            header nav a {
+                min-height: 38px;
+                padding: 0 2px;
+                font-size: 10px;
+                line-height: 1.2;
+                text-align: center;
+            }
+
             .price-box {
                 padding: 40px 20px;
+            }
+
+            .comparison-table-wrapper {
+                border-radius: 8px;
+            }
+
+            .business-table th,
+            .business-table td {
+                padding: 11px 9px;
+                font-size: 13px;
+            }
+
+            .projection-frame {
+                height: 430px;
             }
             .price {
                 font-size: 44px;
@@ -937,11 +1112,12 @@
             </svg>
             <span class="logo">STRATUS</span>
         </a>
-        <nav>
-            <a href="#features">Features</a>
-            <a href="#simulator">Interactive Remote</a>
-            <a href="#specs">Specifications</a>
-            <a href="#faq">FAQ</a>
+        <nav aria-label="Business website pages">
+            <a href="#top" data-view="product" aria-current="page">Product</a>
+            <a href="#proposal" data-view="proposal">Proposal</a>
+            <a href="#survey" data-view="research">Survey &amp; costs</a>
+            <a href="#team" data-view="brand">Team &amp; brand</a>
+            <a href="#preorder" data-view="order">Order</a>
         </nav>
         <label class="theme-control" for="pageTheme">
             <span>Background</span>
@@ -955,10 +1131,10 @@
         <a href="#preorder" class="cta-btn">Pre-Order</a>
     </header>
 
-    <section class="hero">
+    <section class="hero" data-page="product">
         <div class="hero-tag">Stratus Founder's Edition</div>
-        <h1>Comfort, tuned to you.</h1>
-        <p>A considered layer for winding down, with adjustable airflow, warmth, and a tactile sleeve-mounted controller.</p>
+        <h1>The Stratus Smart Robe</h1>
+        <p>Comfort, tuned to you: a robe concept combining adjustable warmth, cooling airflow, inflatable insulation, ambient lighting, and audio.</p>
         <div class="hero-product" role="img" aria-label="Stratus smart robe product concept with a magnetic sleeve remote">
             <svg class="hero-robe" viewBox="0 0 300 320" aria-hidden="true">
                 <path class="robe-shell" d="M112 30 80 43 44 74 69 132 91 117 79 282 Q150 306 221 282 L209 117 231 132 256 74 220 43 188 30 150 70Z"/>
@@ -980,7 +1156,7 @@
         <a href="#preorder" class="cta-btn">Secure Your Launch Discount</a>
     </section>
 
-    <section class="features-container" id="features">
+    <section class="features-container" id="features" data-page="product">
         <h2 class="section-title">Engineered for Absolute Comfort</h2>
         <p class="section-subtitle">Fusing high-performance techwear fabrics with ambient hardware intelligence.</p>
         
@@ -1009,7 +1185,7 @@
     </section>
 
     <!-- Interactive Simulator Module -->
-    <section class="simulator-section" id="simulator">
+    <section class="simulator-section" id="simulator" data-page="product">
         <h2 class="section-title">Experience the Interface</h2>
         <p class="section-subtitle">Use the virtual remote below to simulate adjusting the smart robe systems in real-time.</p>
         
@@ -1101,7 +1277,7 @@
         </div>
     </section>
 
-    <section class="faq-section" id="faq">
+    <section class="faq-section" id="faq" data-page="product">
         <h2 class="section-title">Good to know</h2>
         <p class="section-subtitle">Practical details for everyday care and use.</p>
         <div class="faq-list">
@@ -1121,7 +1297,7 @@
     </section>
 
     <!-- Specs Comparison Matrix -->
-    <section class="specs-section" id="specs">
+    <section class="specs-section" id="specs" data-page="product">
         <h2 class="section-title">How It Compares</h2>
         <p class="section-subtitle">Traditional loungewear vs. modern proactive comfort hardware architecture.</p>
         
@@ -1165,16 +1341,112 @@
         </div>
     </section>
 
+    <section class="business-section" id="proposal" data-page="proposal">
+        <h2 class="section-title">Business Proposal</h2>
+        <p class="section-subtitle">A single comfort system designed to bring climate, insulation, light, and audio together in a robe.</p>
+        <div class="business-grid">
+            <article class="business-block">
+                <h3>The product and the need</h3>
+                <p>The Stratus Smart Robe is a comfort-focused robe concept with inflatable insulation layers, heating and cooling, LED lighting, and spatial audio. A remote is intended to control the robe's systems, including airflow, warmth, insulation, lights, and speakers.</p>
+                <p>The idea is to let people adjust their personal comfort at home without changing the temperature of the whole room, while keeping entertainment and controls close at hand.</p>
+            </article>
+            <article class="business-block">
+                <h3>Customers and alternatives</h3>
+                <p>Potential customers include gamers and content creators, warm sleepers, smart-home enthusiasts, early technology adopters, premium comfort shoppers, and people who enjoy lounging at home.</p>
+                <p>Alternatives include personal neck coolers, portable air conditioners, workplace cooling vests, and conventional robes. Stratus aims to differentiate itself by combining several comfort features in one garment.</p>
+            </article>
+            <article class="business-block">
+                <h3>Development and production</h3>
+                <p>The proposed process starts with CAD designs for the remote, micro-blowers, and magnetic docking ports, followed by selecting lightweight synthetic fabric and working with OEM and PCB suppliers. Planned components include quiet micro-blowers and a 10,000 mAh magnetic power bank.</p>
+                <p>Before any production run, the team plans to test air pressure and puncture resistance, electrical and thermal safety, audio and wireless performance, and water resistance, then inspect batch quality.</p>
+            </article>
+            <article class="business-block">
+                <h3>Sales, operations, and risks</h3>
+                <p>The initial sales channel is planned to be the company website, with Amazon considered later and in-person retail as a future possibility. Promotion will focus on personal comfort control and product demonstrations.</p>
+                <p>Key risks include air leaks or punctures, damage during washing, battery overheating, and manufacturing defects. Removable electronics, clear care instructions, supplier checks, and safety testing are important development needs.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="business-section" id="survey" data-page="research">
+        <h2 class="section-title">Survey &amp; Cost Projections</h2>
+        <p class="section-subtitle">Market feedback and estimated unit economics for the Stratus Smart Robe.</p>
+        <div class="business-block">
+            <h3>Business survey results</h3>
+            <p>Survey responses and a results screenshot were not included with the project details provided. Add the collected response totals or a screenshot here before presenting survey findings; no results have been estimated or invented.</p>
+        </div>
+        <div class="business-callout"><strong>Projection check:</strong> The listed costs ($118 + $23.92 + $47) total $188.92, which is $15.08 below the stated $204 estimated unit cost. Confirm what the remaining amount covers.</div>
+        <div class="comparison-table-wrapper">
+            <table class="business-table">
+                <thead><tr><th>Estimated unit economics</th><th>CAD</th></tr></thead>
+                <tbody>
+                    <tr><td>Manufacturing</td><td>$118.00</td></tr>
+                    <tr><td>Platform and processor fees</td><td>$23.92</td></tr>
+                    <tr><td>Advertising and shipping reserve</td><td>$47.00</td></tr>
+                    <tr><td>Stated estimated cost per unit</td><td>$204.00</td></tr>
+                    <tr><td>Planned selling price</td><td>$300.00</td></tr>
+                    <tr><td>Estimated contribution per unit before other overhead</td><td>$96.00</td></tr>
+                    <tr><td>Startup funding target</td><td>$3,000.00</td></tr>
+                    <tr><td>Approximate sales to recover startup target at $96 each</td><td>32 units</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="business-block" style="margin-top: 22px;">
+            <h3>Google Sheets cost projections</h3>
+            <p>The embedded projection may require Google access. <a href="https://sites.google.com/hdsb.ca/stratus-smart-robe/full-page-embed?pli=1&amp;authuser=0" target="_blank" rel="noopener noreferrer">Open the business cost projections</a>.</p>
+            <iframe class="projection-frame" src="https://sites.google.com/hdsb.ca/stratus-smart-robe/full-page-embed?pli=1&amp;authuser=0" title="Stratus Smart Robe business cost projections" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section class="business-section" id="team" data-page="brand">
+        <h2 class="section-title">Team &amp; Brand</h2>
+        <p class="section-subtitle">The people, visual identity, and early marketing plan behind Stratus.</p>
+        <div class="brand-assets">
+            <img class="brand-logo" src="stratus-logo.png" alt="Stratus Smart Robe logo">
+            <div class="business-block">
+                <h3>Marketing direction</h3>
+                <p>Introduce Stratus with short product demonstrations showing the comfort controls, airflow concept, and robe features. Reach gamers, creators, warm sleepers, and smart-home audiences through social content and a launch update list. Consider Amazon after the direct website launch; explore retail only as the product and production plan mature.</p>
+                <div class="business-links">
+                    <a href="https://docs.google.com/drawings/d/1N5CbdDPC8JU1-ffAA8v5prTc0nfD4M9AFSfrGs-DZis/edit" target="_blank" rel="noopener noreferrer">Open the logo design</a>
+                    <a href="https://docs.google.com/drawings/d/1nVfYjfHgzNNk-DstR67np8DUmF66Kw7PyCXaWkWoAxc/edit" target="_blank" rel="noopener noreferrer">Open the business card</a>
+                </div>
+            </div>
+        </div>
+        <div class="business-grid" style="margin-top: 22px;">
+            <article class="business-block">
+                <h3>Ethan Y.</h3>
+                <p>Proposed role: product design and manufacturing lead. Focus areas include product concepts, CAD development, supplier coordination, and quality checks.</p>
+            </article>
+            <article class="business-block">
+                <h3>Adhvaith E.</h3>
+                <p>Proposed role: systems engineering and marketing lead. Focus areas include the robe's integrated systems, product communication, and customer outreach.</p>
+            </article>
+        </div>
+        <div class="business-block" style="margin-top: 18px;">
+            <h3>Additional support</h3>
+            <p>The plan identifies Carter PCS and Mark Rober as potential sources of adult or professional guidance. Contractor and legal expertise may also be needed as the design and production plan develops.</p>
+        </div>
+    </section>
+
     <!-- Pricing / Preorder Segment -->
-    <section class="pricing" id="preorder">
-        <h2>Exclusive Crowdfunding Offer</h2>
-        <p>Join the inner circle. Gain early manufacturing sequence allocation before global retail rates go live.</p>
+    <section class="pricing" id="preorder" data-page="order">
+        <h2 class="section-title">Ordering Information</h2>
+        <p class="section-subtitle">Planned price and delivery terms for the Stratus Smart Robe. The product is still a concept.</p>
         <div class="price-box">
-            <div class="badge-premium">Early Bird Launch Allocation</div>
-            <h3>Stratus Founder's Edition</h3>
-            <div class="price"><span>$450</span>$299 <span class="price-currency">CAD</span></div>
-            <p style="color: var(--text-muted); margin-bottom: 35px; font-size: 14px; line-height: 1.5;">Includes Smart Robe assembly, Snap Sleeve Magnetic Remote, High-Capacity USB-C Power Bank, and Lifetime Connected App Authentication.</p>
-            <button class="cta-btn" style="width: 100%; padding: 16px;" onclick="openPreorderModal()">Reserve My Spot</button>
+            <div class="badge-premium">Planned price</div>
+            <h3>Stratus Smart Robe</h3>
+            <div class="price">$300 <span class="price-currency">CAD</span></div>
+            <p style="color: var(--text-muted); margin-bottom: 35px; font-size: 14px; line-height: 1.5;">A target price based on the current concept and estimated costs. Final product specifications and availability are not confirmed.</p>
+            <button class="cta-btn" style="width: 100%; padding: 16px;" onclick="openPreorderModal()">Get launch updates</button>
+        </div>
+        <div class="order-details">
+            <div class="business-block">
+                <h3>Shipping, tax, and delivery</h3>
+                <p><strong>Shipping and handling:</strong> Not finalized; the projection includes a $47 advertising and shipping reserve per unit.</p>
+                <p><strong>Taxes:</strong> Not included in the planned $300 CAD price; applicable tax would depend on the buyer's location and final checkout setup.</p>
+                <p><strong>Estimated delivery:</strong> Not available until manufacturing and fulfillment timelines are confirmed.</p>
+            </div>
+            <div class="business-callout"><strong>Prototype notice:</strong> This page does not accept orders or payments. The update form is a demo signup only; no purchase is made.</div>
         </div>
     </section>
 
@@ -1478,6 +1750,60 @@
             document.body.dataset.theme = pageTheme.value;
             localStorage.setItem('stratus-page-theme', pageTheme.value);
         });
+
+        const siteViews = {
+            product: [...document.querySelectorAll('[data-page="product"]')],
+            proposal: [...document.querySelectorAll('[data-page="proposal"]')],
+            research: [...document.querySelectorAll('[data-page="research"]')],
+            brand: [...document.querySelectorAll('[data-page="brand"]')],
+            order: [...document.querySelectorAll('[data-page="order"]')]
+        };
+        const viewLinks = document.querySelectorAll('nav [data-view]');
+
+        function showSiteView(viewName, updateHistory = false) {
+            const selectedView = siteViews[viewName] ? viewName : 'product';
+
+            for (const [name, sections] of Object.entries(siteViews)) {
+                for (const section of sections) section.hidden = name !== selectedView;
+            }
+
+            for (const link of viewLinks) {
+                if (link.dataset.view === selectedView) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            }
+
+            if (updateHistory) {
+                const activeLink = document.querySelector(`nav [data-view="${selectedView}"]`);
+                history.pushState({ view: selectedView }, '', activeLink.href);
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        function viewFromHash() {
+            const target = document.getElementById(window.location.hash.slice(1));
+            return target?.dataset.page || 'product';
+        }
+
+        for (const link of viewLinks) {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                showSiteView(link.dataset.view, true);
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]:not([data-view])').forEach((link) => {
+            link.addEventListener('click', () => {
+                const target = document.getElementById(link.hash.slice(1));
+                showSiteView(target?.dataset.page || 'product');
+            });
+        });
+
+        window.addEventListener('popstate', () => showSiteView(viewFromHash()));
+        showSiteView(viewFromHash());
 
         if (new URLSearchParams(window.location.search).get('preorder') === 'success') {
             showPreorderSuccess();
