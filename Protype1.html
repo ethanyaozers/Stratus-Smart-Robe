@@ -654,6 +654,125 @@
             min-height: 70vh;
         }
 
+        .pitch-slide {
+            min-height: 68svh;
+            padding: 84px 6%;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid color-mix(in srgb, var(--accent-cyan) 18%, transparent);
+            background: linear-gradient(110deg, color-mix(in srgb, var(--panel-bg) 58%, var(--bg-color)), var(--bg-color) 72%);
+        }
+
+        .pitch-slide:nth-of-type(even) {
+            background: linear-gradient(110deg, var(--bg-color), color-mix(in srgb, var(--card-bg) 75%, var(--bg-color)));
+        }
+
+        .pitch-inner {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+        }
+
+        .pitch-kicker {
+            color: var(--accent-cyan);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pitch-slide h2 {
+            max-width: 850px;
+            margin: 12px 0 22px;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.12;
+        }
+
+        .pitch-slide p,
+        .pitch-slide li {
+            color: var(--text-muted);
+            font-size: 19px;
+            line-height: 1.55;
+        }
+
+        .pitch-columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .pitch-stat {
+            border-top: 2px solid var(--accent-cyan);
+            padding: 18px 0;
+        }
+
+        .pitch-stat strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 28px;
+        }
+
+        .pitch-stat span {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .pitch-callout {
+            margin-top: 20px;
+            padding: 18px 22px;
+            border-left: 3px solid var(--accent-orange);
+            background: color-mix(in srgb, var(--accent-orange) 8%, var(--card-bg));
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        .pitch-commercial {
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            gap: 26px;
+            align-items: center;
+            padding: 24px;
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent-cyan);
+        }
+
+        .pitch-film-frame {
+            min-height: 250px;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(ellipse at 50% 45%, #465743, #17211b 72%);
+        }
+
+        .pitch-film-frame svg { width: min(230px, 70%); height: 220px; }
+
+        .pitch-commercial ol {
+            margin: 0;
+            padding-left: 24px;
+        }
+
+        .pitch-commercial li { padding: 5px 0; }
+
+        .pitch-faq details {
+            border-bottom: 1px solid color-mix(in srgb, var(--accent-cyan) 20%, transparent);
+        }
+
+        .pitch-faq summary {
+            padding: 14px 0;
+            color: var(--text-main);
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .pitch-faq details p { margin: 0 0 16px; font-size: 17px; }
+
+        .pitch-budget { padding-left: 22px; }
+
+        @media (max-width: 700px) {
+            .pitch-slide { min-height: 0; padding: 64px 6%; }
+            .pitch-columns, .pitch-commercial { grid-template-columns: 1fr; gap: 12px; }
+            .pitch-slide p, .pitch-slide li { font-size: 18px; }
+        }
+
         .business-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1062,7 +1181,7 @@
 
             header nav {
                 display: grid;
-                grid-template-columns: repeat(5, minmax(0, 1fr));
+                grid-template-columns: repeat(6, minmax(0, 1fr));
                 grid-column: 1 / -1;
                 grid-row: 2;
                 gap: 0;
@@ -1071,7 +1190,7 @@
             header nav a {
                 min-height: 38px;
                 padding: 0 2px;
-                font-size: 10px;
+                font-size: 11px;
                 line-height: 1.2;
                 text-align: center;
             }
@@ -1114,10 +1233,11 @@
         </a>
         <nav aria-label="Business website pages">
             <a href="#top" data-view="product" aria-current="page">Product</a>
-            <a href="#proposal" data-view="proposal">Proposal</a>
-            <a href="#survey" data-view="research">Survey &amp; costs</a>
-            <a href="#team" data-view="brand">Team &amp; brand</a>
-            <a href="#preorder" data-view="order">Order</a>
+            <a href="#pitch" data-view="pitch">Investor pitch</a>
+            <a href="#proposal" data-view="proposal">Plan</a>
+            <a href="#survey" data-view="research">Market &amp; costs</a>
+            <a href="#team" data-view="brand">Team</a>
+            <a href="#preorder" data-view="order">Updates</a>
         </nav>
         <label class="theme-control" for="pageTheme">
             <span>Background</span>
@@ -1128,11 +1248,11 @@
                 <option value="graphite">Graphite</option>
             </select>
         </label>
-        <a href="#preorder" class="cta-btn">Pre-Order</a>
+        <a href="#pitch" class="cta-btn">Investor pitch</a>
     </header>
 
     <section class="hero" data-page="product">
-        <div class="hero-tag">Stratus Founder's Edition</div>
+        <div class="hero-tag">Product concept</div>
         <h1>The Stratus Smart Robe</h1>
         <p>Comfort, tuned to you: a robe concept combining adjustable warmth, cooling airflow, inflatable insulation, ambient lighting, and audio.</p>
         <div class="hero-product" role="img" aria-label="Stratus smart robe product concept with a magnetic sleeve remote">
@@ -1153,33 +1273,33 @@
             </svg>
             <span class="hero-caption">Concept render · details subject to change</span>
         </div>
-        <a href="#preorder" class="cta-btn">Secure Your Launch Discount</a>
+        <a href="#pitch" class="cta-btn">See the investor pitch</a>
     </section>
 
     <section class="features-container" id="features" data-page="product">
-        <h2 class="section-title">Engineered for Absolute Comfort</h2>
-        <p class="section-subtitle">Fusing high-performance techwear fabrics with ambient hardware intelligence.</p>
+        <h2 class="section-title">Comfort, with more control</h2>
+        <p class="section-subtitle">Planned features for the Stratus concept. Engineering, performance, and safety have not yet been tested.</p>
         
         <div class="features">
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 14h18a5 5 0 1 0-5-5M5 21h27a5 5 0 1 1-5 5M5 28h16"/><path d="M10 9h3M13 33h4"/></svg>
                 <h3>Micro-Blower AC</h3>
-                <p>Dual ultra-quiet brushless fans circulate crisp, refreshing air through a specialized internal air-layer to prevent sweat and fabric adhesion.</p>
+                <p>The concept explores small fans and internal channels to move air through the garment. Cooling and noise performance have not been tested.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 24V16a12 12 0 0 1 24 0v8M8 20H5v8h7v-8zm24 0h3v8h-7v-8zM16 31c2 2 6 2 8 0"/></svg>
                 <h3>Spatial Audio Collar</h3>
-                <p>Thin, flexible bone-conduction panels embedded in the collar create a private audio bubble without the need for isolating earbuds.</p>
+                <p>Integrated open-ear speakers are planned to create a more immersive listening experience without conventional headphones.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="m20 4 3.5 11.5L35 19l-11.5 3.5L20 34l-3.5-11.5L5 19l11.5-3.5z"/><path d="m32 27 1.5 4.5L38 33l-4.5 1.5L32 39l-1.5-4.5L26 33l4.5-1.5z"/></svg>
                 <h3>Reactive Nebula LEDs</h3>
-                <p>Embedded NeoPixel light strips diffuse glowing ambient lighting through a frosted mesh shell, pulsing seamlessly to sound frequencies.</p>
+                <p>LED strips and ambient lighting are part of the design concept; materials, controls, and sound-reactive effects remain to be developed.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="5" width="26" height="30" rx="8"/><path d="M14 15h12M14 21h12M14 27h7"/><circle cx="27" cy="27" r="2"/></svg>
                 <h3>Magnetic Click-Remote</h3>
-                <p>Adjust your climate zones, sound volume, air pressure ventilation, and LED patterns on the fly with a tactile remote that snaps to your sleeve.</p>
+                <p>The planned remote would adjust climate, insulation, audio, and lighting. Its interface is shown here as an interactive visual simulation.</p>
             </div>
         </div>
     </section>
@@ -1299,7 +1419,7 @@
     <!-- Specs Comparison Matrix -->
     <section class="specs-section" id="specs" data-page="product">
         <h2 class="section-title">How It Compares</h2>
-        <p class="section-subtitle">Traditional loungewear vs. modern proactive comfort hardware architecture.</p>
+        <p class="section-subtitle">A design-concept comparison, not a tested product specification.</p>
         
         <div class="comparison-table-wrapper">
             <table>
@@ -1307,37 +1427,210 @@
                     <tr>
                         <th>Feature Specification</th>
                         <th>Standard Premium Robe</th>
-                        <th>Stratus Founder's Edition</th>
+                        <th>Stratus concept (planned)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Climate Regulation</td>
                         <td>Passive insulation (Trap heat/sweat)</td>
-                        <td class="highlight">Active dual brushless induction cooling</td>
+                        <td class="highlight">Planned active airflow and heating concept</td>
                     </tr>
                     <tr>
                         <td>Acoustic Architecture</td>
                         <td>None (Requires separate headphones)</td>
-                        <td class="highlight">Integrated open-ear bone conduction collar</td>
+                        <td class="highlight">Planned integrated open-ear audio</td>
                     </tr>
                     <tr>
                         <td>Visual Personalization</td>
                         <td>Static single fabric color</td>
-                        <td class="highlight">NeoPixel mesh arrays with reactive logic</td>
+                        <td class="highlight">Planned ambient LED lighting</td>
                     </tr>
                     <tr>
                         <td>Power Distribution</td>
                         <td>N/A</td>
-                        <td class="highlight">10,000mAh magnetic quick-snap power bank</td>
+                        <td class="highlight">Proposed removable 10,000 mAh power bank</td>
                     </tr>
                     <tr>
                         <td>Control Interface</td>
                         <td>Manual cloth belt tie</td>
-                        <td class="highlight">Wireless RF modular sleeve remote clicker</td>
+                        <td class="highlight">Proposed sleeve-mounted remote</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </section>
+
+    <section class="pitch-slide" id="pitch" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 01 · 0:35 · The story</p>
+            <h2>Built around the things we already love.</h2>
+            <div class="pitch-columns">
+                <p>We are Ethan Y. and Adhvaith E., two students who are into gaming, sports, clothes, and spending time with friends. We started imagining what our ideal at-home comfort gear could be: something you could wear to relax, game, or watch a game without constantly adding or removing layers.</p>
+                <p>That thought became the Stratus Smart Robe: a creative product idea that brings personal comfort and entertainment together. We are still at the concept stage, and this pitch is our plan for turning that idea into a design we can test.</p>
+            </div>
+            <div class="pitch-callout"><strong>Our roles:</strong> Ethan leads product design and marketing. Adhvaith leads systems engineering and manufacturing.</div>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 02 · 0:40 · The opportunity</p>
+            <h2>At home, comfort changes by the minute.</h2>
+            <div class="pitch-columns">
+                <p>A room can feel too warm while someone is gaming, relaxing, or trying to sleep. The usual options are separate: change the thermostat, grab a blanket, put on headphones, or use a personal fan.</p>
+                <div>
+                    <p>We are designing for people who value comfort and technology:</p>
+                    <ul>
+                        <li>Gamers and content creators</li>
+                        <li>Warm sleepers and home loungers</li>
+                        <li>Smart-home enthusiasts and early adopters</li>
+                        <li>People shopping for premium comfort products</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 03 · 0:45 · The product</p>
+            <h2>One robe concept. A whole comfort setup.</h2>
+            <div class="business-grid">
+                <article class="business-block"><h3>Climate</h3><p>Proposed heating, cooling airflow, and inflatable insulation layers for adjustable warmth.</p></article>
+                <article class="business-block"><h3>Sound</h3><p>Integrated speakers planned around an open-ear, spatial-audio listening experience.</p></article>
+                <article class="business-block"><h3>Light</h3><p>LED lighting designed to add ambient color while relaxing or gaming.</p></article>
+                <article class="business-block"><h3>Control</h3><p>A remote concept brings climate, insulation, lighting, and audio controls together.</p></article>
+            </div>
+            <p class="pitch-callout"><strong>Important:</strong> These are planned features, not tested or commercially available specifications. The interactive remote on the Product page is a visual simulation.</p>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 04 · 0:35 · Why Stratus</p>
+            <h2>More than one comfort feature in one wearable.</h2>
+            <div class="pitch-columns">
+                <div>
+                    <p>We see alternatives in conventional robes, personal neck coolers, portable air conditioners, and workplace cooling vests. Each solves a narrower comfort need.</p>
+                </div>
+                <div>
+                    <p>Stratus aims to combine clothing, personal climate controls, adjustable insulation, ambient lighting, and audio in one system, controlled from the robe. Our difference is the integrated experience; the design still needs engineering and testing to prove it works.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 05 · 0:40 · Market and research</p>
+            <h2>Start with feedback, then refine the product.</h2>
+            <div class="pitch-columns">
+                <p>Our first marketing plan is a direct website launch supported by short product demonstrations and social content for gaming, creator, smart-home, and comfort audiences. Amazon could follow; in-person retail is a later possibility.</p>
+                <div>
+                    <p>We have prepared a customer survey and draft cost projections. Survey response totals and findings are not available yet, so we are not claiming validated demand. The site also includes our brand mark and business-card design.</p>
+                    <p><a href="#survey">Review survey and cost projections</a><br><a href="#team">See team and brand materials</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 06 · 0:45 · How we would build it</p>
+            <h2>Prototype carefully before making promises.</h2>
+            <p>Our next steps are CAD designs for the remote, micro-blowers, and magnetic docking ports; fabric and component research; and conversations with suitable manufacturing and electronics suppliers. We would then make and inspect prototypes before considering a production run.</p>
+            <div class="pitch-columns">
+                <div><h3>Planned checks</h3><ul><li>Air pressure, leaks, and puncture resistance</li><li>Electrical and thermal safety</li><li>Audio, wireless, and water resistance</li></ul></div>
+                <div><h3>Risks to solve</h3><ul><li>Inflatable layers could puncture or leak</li><li>Electronics and batteries need safe removal and care</li><li>Supplier quality and manufacturing defects need oversight</li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 07 · 0:35 · Business model</p>
+            <h2>Direct sales first, with a planned $300 CAD price.</h2>
+            <div class="pitch-columns">
+                <p>Our proposed first channel is our own website, where we can explain the product and gather customer interest directly. Amazon and retail are possible future channels, not current sales arrangements.</p>
+                <div>
+                    <div class="pitch-stat"><strong>$300 CAD</strong><span>Proposed selling price per robe</span></div>
+                    <div class="pitch-stat"><strong>Concept stage</strong><span>No confirmed production, inventory, or delivery date</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 08 · 0:45 · The numbers</p>
+            <h2>A draft model, with one number to reconcile.</h2>
+            <div class="pitch-columns">
+                <div>
+                    <div class="pitch-stat"><strong>$204 CAD</strong><span>Current estimated cost per unit</span></div>
+                    <div class="pitch-stat"><strong>$96 CAD</strong><span>Estimated contribution per unit at $300, before other overhead</span></div>
+                </div>
+                <div>
+                    <p>The plan lists $118 manufacturing, $23.92 platform and processing, and $47 advertising and shipping reserve. Those items total $188.92, leaving $15.08 unexplained against the $204 estimate.</p>
+                    <p>At the stated $204 cost, recovering a $3,000 startup target would take about 32 sales at $96 contribution each. This is a rough estimate, not a full break-even analysis; the cost assumptions need validation.</p>
+                </div>
+            </div>
+            <p><a href="#survey">See the detailed cost table and projection sheet</a></p>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 09 · 0:45 · The ask</p>
+            <h2>$3,000 CAD for 15% equity.</h2>
+            <div class="pitch-columns">
+                <div>
+                    <p>This proposed classroom pitch values the business at $17,000 before investment and $20,000 after investment. We would use the funding to develop and evaluate an early prototype, not to promise a finished product.</p>
+                    <p class="pitch-callout">This is a student-project proposal for presentation purposes, not a binding investment offer. Any real investment would need adult, legal, and financial advice.</p>
+                </div>
+                <div>
+                    <h3>Proposed use of funds</h3>
+                    <ul class="pitch-budget">
+                        <li>$1,200 — design work and prototype materials</li>
+                        <li>$900 — safety and performance testing</li>
+                        <li>$600 — supplier samples and component research</li>
+                        <li>$300 — website, launch content, and administration</li>
+                    </ul>
+                    <p>These are planning estimates that would be refined with supplier quotes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pitch-slide" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Slide 10 · 1:00 · Commercial and questions</p>
+            <h2>Stratus: your comfort, your setting.</h2>
+            <div class="pitch-commercial">
+                <div class="pitch-film-frame" role="img" aria-label="Illustration of the Stratus robe concept">
+                    <svg viewBox="0 0 220 260" aria-hidden="true">
+                        <path d="m82 22-26 12-29 26 19 47 18-13-10 139q66 18 132 0L176 94l18 13 19-47-29-26-26-12-38 34z" fill="#aab9ae" stroke="#dbe5dc" stroke-width="3" stroke-linejoin="round"/>
+                        <path d="m82 22 38 34 38-34m-38 34v70m-30-46 30 25 30-25m-79 97q49 16 98 0" fill="none" stroke="#dbe5dc" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M63 150q47 14 94 0v34q-47 15-94 0z" fill="#85968a"/>
+                        <path d="M70 87q-24 13-27 30m107-30q24 13 27 30" fill="none" stroke="#8de2c1" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <ol>
+                    <li><strong>0–7 sec:</strong> A gamer pauses, feeling too warm. On-screen: “Too hot to focus?”</li>
+                    <li><strong>7–17 sec:</strong> They tap the robe’s concept remote; the illustration shifts from cool airflow to warm insulation, then ambient light.</li>
+                    <li><strong>17–25 sec:</strong> They settle back into the game. Voiceover: “One robe. A more personal way to get comfortable.”</li>
+                    <li><strong>End card:</strong> “Stratus Smart Robe. Your comfort, your setting. Explore the concept.”</li>
+                </ol>
+            </div>
+            <p>This is a storyboard for a future concept commercial, not recorded product footage.</p>
+            <h3>Questions we are ready for</h3>
+            <div class="pitch-faq">
+                <details><summary>Has the robe been built or tested?</summary><p>No. It is a product concept with a website simulation. Prototyping and safety testing are proposed next steps.</p></details>
+                <details><summary>How do you know customers will buy it?</summary><p>We have a survey prepared, but do not yet have results to support demand. Gathering and reporting customer feedback is an early priority.</p></details>
+                <details><summary>Why ask for $3,000?</summary><p>That is the startup funding target in our plan. The proposed budget directs it toward design, prototype materials, testing, supplier samples, and basic launch preparation.</p></details>
+                <details><summary>What is the biggest risk?</summary><p>Combining safe, washable electronics with reliable climate and inflatable systems in a comfortable garment. We would test those systems before production.</p></details>
+            </div>
+            <p><strong>Thank you. We are Ethan and Adhvaith, and this is the Stratus Smart Robe.</strong></p>
         </div>
     </section>
 
@@ -1419,43 +1712,43 @@
         <div class="business-grid" style="margin-top: 22px;">
             <article class="business-block">
                 <h3>Ethan Y.</h3>
-                <p>Proposed role: product design and manufacturing lead. Focus areas include product concepts, CAD development, supplier coordination, and quality checks.</p>
+                <p>Product design and marketing lead. Focus areas include shaping the product concept, brand, and customer outreach.</p>
             </article>
             <article class="business-block">
                 <h3>Adhvaith E.</h3>
-                <p>Proposed role: systems engineering and marketing lead. Focus areas include the robe's integrated systems, product communication, and customer outreach.</p>
+                <p>Systems engineering and manufacturing lead. Focus areas include the robe's integrated systems, component research, and production planning.</p>
             </article>
         </div>
         <div class="business-block" style="margin-top: 18px;">
             <h3>Additional support</h3>
-            <p>The plan identifies Carter PCS and Mark Rober as potential sources of adult or professional guidance. Contractor and legal expertise may also be needed as the design and production plan develops.</p>
+            <p>Carter PCS and Mark Rober are names the team would like to seek guidance from; no advisory relationship is confirmed. Contractor and legal expertise may also be needed as the design and production plan develops.</p>
         </div>
     </section>
 
     <!-- Pricing / Preorder Segment -->
     <section class="pricing" id="preorder" data-page="order">
-        <h2 class="section-title">Ordering Information</h2>
-        <p class="section-subtitle">Planned price and delivery terms for the Stratus Smart Robe. The product is still a concept.</p>
+        <h2 class="section-title">Project updates</h2>
+        <p class="section-subtitle">The Stratus Smart Robe is still a concept. Follow the project as the design develops.</p>
         <div class="price-box">
-            <div class="badge-premium">Planned price</div>
+            <div class="badge-premium">Concept price target</div>
             <h3>Stratus Smart Robe</h3>
             <div class="price">$300 <span class="price-currency">CAD</span></div>
             <p style="color: var(--text-muted); margin-bottom: 35px; font-size: 14px; line-height: 1.5;">A target price based on the current concept and estimated costs. Final product specifications and availability are not confirmed.</p>
-            <button class="cta-btn" style="width: 100%; padding: 16px;" onclick="openPreorderModal()">Get launch updates</button>
+            <button class="cta-btn" style="width: 100%; padding: 16px;" onclick="openPreorderModal()">Get project updates</button>
         </div>
         <div class="order-details">
             <div class="business-block">
                 <h3>Shipping, tax, and delivery</h3>
-                <p><strong>Shipping and handling:</strong> Not finalized; the projection includes a $47 advertising and shipping reserve per unit.</p>
+                <p><strong>Shipping and handling:</strong> Not finalized; the draft projection includes a $47 advertising and shipping reserve per unit.</p>
                 <p><strong>Taxes:</strong> Not included in the planned $300 CAD price; applicable tax would depend on the buyer's location and final checkout setup.</p>
-                <p><strong>Estimated delivery:</strong> Not available until manufacturing and fulfillment timelines are confirmed.</p>
+                <p><strong>Availability:</strong> No orders are being taken. A price, delivery date, and shipping plan will depend on future design and production work.</p>
             </div>
             <div class="business-callout"><strong>Prototype notice:</strong> This page does not accept orders or payments. The update form is a demo signup only; no purchase is made.</div>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 Stratus Techwear Inc. All rights reserved. Designed for the futuristic lounger ecosystem.
+        Stratus Smart Robe · Student business concept · 2026
     </footer>
 
     <!-- Futuristic Custom Dialogue Overlays (No Alert Blocks) -->
@@ -1466,16 +1759,16 @@
             <!-- Default Sign Up Form Layout -->
             <div id="modalFormState">
                 <svg class="modal-icon feature-icon" viewBox="0 0 40 40" aria-hidden="true"><path d="M21 5c7 2 11 8 12 15l-9 9-9-9c1-7 5-13 6-15z"/><path d="m15 20-7 2-3 7 10-3m10 0 3 8 5-5-2-7M19 14h.1"/><circle cx="21" cy="14" r="2"/></svg>
-                <h3>Secure Launch Priority</h3>
-                <p>Enter your email to receive a confirmation for this demo preorder signup. No payment will be taken.</p>
+                <h3>Get project updates</h3>
+                <p>Enter your email to receive a confirmation for this project update signup. No order or payment will be taken.</p>
                 <form action="https://formsubmit.co/1yaoeth@hdsb.ca" method="POST">
-                    <input type="hidden" name="_subject" value="New Stratus Smart Robe preorder signup">
-                    <input type="hidden" name="_autoresponse" value="Thanks for pre-ordering the Stratus Smart Robe! This is a demo signup confirmation only. No purchase or payment was processed. We'll share updates as the project develops.">
+                    <input type="hidden" name="_subject" value="Stratus Smart Robe project update signup">
+                    <input type="hidden" name="_autoresponse" value="Thanks for following the Stratus Smart Robe project. This is an update signup only; no order or payment was processed.">
                     <input type="hidden" name="_next" value="https://ethanyaozers.github.io/Stratus-Smart-Robe/Protype1.html?preorder=success#preorder">
                     <input type="email" class="form-input" id="subscriberEmail" name="email" placeholder="Enter your email address" autocomplete="email" required>
-                    <button class="cta-btn" style="width: 100%; padding: 14px;" type="submit">Authorize Spot Reservation</button>
+                    <button class="cta-btn" style="width: 100%; padding: 14px;" type="submit">Sign up for updates</button>
                 </form>
-                <p style="font-size: 12px; margin: 12px 0 0;">Your email will be sent through our signup provider, and you'll receive a confirmation. Demo signup only; no payment is taken.</p>
+                <p style="font-size: 12px; margin: 12px 0 0;">Your email is sent through our signup provider. Project updates only; no order or payment is taken.</p>
             </div>
 
             <!-- Interactive Success State Layout -->
@@ -1483,7 +1776,7 @@
                 <svg class="modal-icon feature-icon" style="color: var(--accent-cyan)" viewBox="0 0 40 40" aria-hidden="true"><path d="M22 3 9 22h9l-1 15 14-21h-9z"/></svg>
                 <h3>Thanks for signing up!</h3>
                 <p style="color: #ffffff; font-weight: 600;">Welcome to the Inner Circle.</p>
-                <p>A confirmation email is on its way. This is a demo preorder signup; no purchase or payment was processed.</p>
+                <p>A confirmation email is on its way. This is a project update signup; no order or payment was processed.</p>
                 <button class="cta-btn" style="width: 100%; padding: 12px; background: #222943; color: #fff;" onclick="closePreorderModal()">Exit Interface</button>
             </div>
         </div>
@@ -1757,6 +2050,7 @@
 
         const siteViews = {
             product: [...document.querySelectorAll('[data-page="product"]')],
+            pitch: [...document.querySelectorAll('[data-page="pitch"]')],
             proposal: [...document.querySelectorAll('[data-page="proposal"]')],
             research: [...document.querySelectorAll('[data-page="research"]')],
             brand: [...document.querySelectorAll('[data-page="brand"]')],
