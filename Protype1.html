@@ -654,16 +654,13 @@
             min-height: 70vh;
         }
 
-        .pitch-slide {
-            min-height: 68svh;
+        .pitch-section {
             padding: 84px 6%;
-            display: flex;
-            align-items: center;
             border-bottom: 1px solid color-mix(in srgb, var(--accent-cyan) 18%, transparent);
             background: linear-gradient(110deg, color-mix(in srgb, var(--panel-bg) 58%, var(--bg-color)), var(--bg-color) 72%);
         }
 
-        .pitch-slide:nth-of-type(even) {
+        .pitch-section:nth-of-type(even) {
             background: linear-gradient(110deg, var(--bg-color), color-mix(in srgb, var(--card-bg) 75%, var(--bg-color)));
         }
 
@@ -679,15 +676,15 @@
             text-transform: uppercase;
         }
 
-        .pitch-slide h2 {
+        .pitch-section h2 {
             max-width: 850px;
             margin: 12px 0 22px;
             font-size: clamp(32px, 4vw, 48px);
             line-height: 1.12;
         }
 
-        .pitch-slide p,
-        .pitch-slide li {
+        .pitch-section p,
+        .pitch-section li {
             color: var(--text-muted);
             font-size: 19px;
             line-height: 1.55;
@@ -744,7 +741,7 @@
 
         .pitch-film-frame svg { width: min(230px, 70%); height: 220px; }
 
-        .pitch-commercial ol {
+        .pitch-commercial ul {
             margin: 0;
             padding-left: 24px;
         }
@@ -768,9 +765,9 @@
         .pitch-budget { padding-left: 22px; }
 
         @media (max-width: 700px) {
-            .pitch-slide { min-height: 0; padding: 64px 6%; }
+            .pitch-section { padding: 64px 6%; }
             .pitch-columns, .pitch-commercial { grid-template-columns: 1fr; gap: 12px; }
-            .pitch-slide p, .pitch-slide li { font-size: 18px; }
+            .pitch-section p, .pitch-section li { font-size: 18px; }
         }
 
         .business-grid {
@@ -1461,26 +1458,34 @@
         </div>
     </section>
 
-    <section class="pitch-slide" id="pitch" data-page="pitch">
+    <section class="pitch-section" id="pitch" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 01 · 0:35 · The story</p>
+            <p class="pitch-kicker">The team</p>
             <h2>Built around the things we already love.</h2>
-            <div class="pitch-columns">
-                <p>We're Ethan Y. and Adhvaith E. We both enjoy gaming, sports, clothes, and spending time with friends, so we started imagining our ideal at-home comfort gear: something you could wear to relax, game, or watch a game without constantly adding or removing layers.</p>
-                <p>We turned that idea into the Stratus Smart Robe, bringing personal comfort and entertainment together. We're still at the concept stage, and our plan is to turn the idea into a design we can test.</p>
-            </div>
-            <div class="pitch-callout"><strong>Our roles:</strong> I lead product design and marketing, and Adhvaith leads systems engineering and manufacturing.</div>
+            <ul>
+                <li>Founders: Ethan Y. and Adhvaith E.</li>
+                <li>Shared interests: gaming, sports, apparel, and time with friends</li>
+                <li>Goal: more personal comfort for relaxing, gaming, and watching sports</li>
+                <li>Stage: product concept; design and testing are next</li>
+                <li>Roles: product design and marketing; systems engineering and manufacturing</li>
+            </ul>
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 02 · 0:40 · The opportunity</p>
+            <p class="pitch-kicker">Opportunity</p>
             <h2>At home, comfort changes by the minute.</h2>
             <div class="pitch-columns">
-                <p>Your room can feel too warm while you're gaming, relaxing, or trying to sleep. You could change the thermostat, grab a blanket, put on headphones, or use a personal fan, but those options solve different problems.</p>
                 <div>
-                    <p>We're designing Stratus for people who value comfort and technology, including:</p>
+                    <h3>Comfort needs</h3>
+                    <ul>
+                        <li>Room temperature can feel wrong while gaming, relaxing, or sleeping</li>
+                        <li>Thermostats, blankets, headphones, and personal fans address separate needs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Initial audience</h3>
                     <ul>
                         <li>Gamers and content creators</li>
                         <li>Warm sleepers and home loungers</li>
@@ -1492,78 +1497,110 @@
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 03 · 0:45 · The product</p>
+            <p class="pitch-kicker">Product concept</p>
             <h2>One robe concept. A whole comfort setup.</h2>
             <div class="business-grid">
-                <article class="business-block"><h3>Climate</h3><p>We're exploring heating, cooling airflow, and inflatable insulation so you can adjust your warmth.</p></article>
-                <article class="business-block"><h3>Sound</h3><p>We're exploring integrated speakers for an open-ear, spatial-audio listening experience.</p></article>
-                <article class="business-block"><h3>Light</h3><p>We want LED lighting to add ambient color while you relax or game.</p></article>
-                <article class="business-block"><h3>Control</h3><p>Our remote concept brings climate, insulation, lighting, and audio controls together.</p></article>
+                <article class="business-block"><h3>Climate</h3><p>Heating, airflow, and adjustable insulation concepts</p></article>
+                <article class="business-block"><h3>Sound</h3><p>Integrated open-ear audio concept</p></article>
+                <article class="business-block"><h3>Light</h3><p>Ambient LED lighting concept</p></article>
+                <article class="business-block"><h3>Control</h3><p>One interface concept for climate, insulation, lighting, and audio</p></article>
             </div>
-            <p class="pitch-callout"><strong>Important:</strong> These are ideas we're exploring, not tested or commercially available features. Try our interactive remote on the Product page; it's only a visual simulation.</p>
+            <p class="pitch-callout"><strong>Concept stage:</strong> Features are not tested or commercially available. The interactive remote is a visual simulation.</p>
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 04 · 0:35 · Why Stratus</p>
+            <p class="pitch-kicker">Why Stratus</p>
             <h2>More than one comfort feature in one wearable.</h2>
             <div class="pitch-columns">
                 <div>
-                    <p>We see alternatives like conventional robes, personal neck coolers, portable air conditioners, and workplace cooling vests. Each meets a different comfort need.</p>
+                    <h3>Alternatives</h3>
+                    <ul>
+                        <li>Conventional robes</li>
+                        <li>Personal neck coolers and portable air conditioners</li>
+                        <li>Workplace cooling vests</li>
+                    </ul>
                 </div>
                 <div>
-                    <p>We want Stratus to combine clothing, personal climate controls, adjustable insulation, ambient lighting, and audio in one system you control from the robe. Our idea is the integrated experience, but we still need engineering and testing to prove it works.</p>
+                    <h3>Our difference</h3>
+                    <ul>
+                        <li>Combine clothing, personal climate, adjustable insulation, lighting, and audio</li>
+                        <li>Bring controls together in one wearable concept</li>
+                        <li>Engineering and testing still needed to prove feasibility</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 05 · 0:40 · Market and research</p>
+            <p class="pitch-kicker">Market and research</p>
             <h2>Start with feedback, then refine the product.</h2>
             <div class="pitch-columns">
-                <p>Our first marketing step would be a website launch, supported by short product demonstrations and social content for gaming, creator, smart-home, and comfort audiences. We could consider Amazon later, with in-person retail as another possibility.</p>
+                <ul>
+                    <li>Launch direction: website, product demonstrations, and social content</li>
+                    <li>Audiences: gaming, creator, smart-home, and comfort communities</li>
+                    <li>Survey prepared; no results collected, so demand is not validated</li>
+                </ul>
+                <ul>
+                    <li>Potential later channels: Amazon and in-person retail</li>
+                    <li><a href="#survey">Survey and cost projections</a></li>
+                    <li><a href="#team">Team and brand materials</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="pitch-section" data-page="pitch">
+        <div class="pitch-inner">
+            <p class="pitch-kicker">Development plan</p>
+            <h2>Prototype carefully before making promises.</h2>
+            <div class="pitch-columns">
                 <div>
-                    <p>We've prepared a customer survey and draft cost projections. We don't have survey results yet, so we can't claim that demand is validated. We've also included our brand mark and business-card design.</p>
-                    <p><a href="#survey">Review survey and cost projections</a><br><a href="#team">See team and brand materials</a></p>
+                    <h3>Next steps</h3>
+                    <ul>
+                        <li>CAD for the remote, micro-blowers, and magnetic docking ports</li>
+                        <li>Research fabrics, components, and suppliers</li>
+                        <li>Build and inspect prototypes before considering production</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Testing priorities</h3>
+                    <ul>
+                        <li>Air pressure, leaks, and puncture resistance</li>
+                        <li>Electrical and thermal safety</li>
+                        <li>Audio, wireless, water resistance, and manufacturing quality</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 06 · 0:45 · How we would build it</p>
-            <h2>Prototype carefully before making promises.</h2>
-            <p>Our next steps are to create CAD designs for the remote, micro-blowers, and magnetic docking ports; research fabrics and components; and talk with manufacturing and electronics suppliers. Then we'd make and inspect prototypes before considering a production run.</p>
-            <div class="pitch-columns">
-                <div><h3>What we'll test</h3><ul><li>Air pressure, leaks, and puncture resistance</li><li>Electrical and thermal safety</li><li>Audio, wireless, and water resistance</li></ul></div>
-                <div><h3>What we still need to solve</h3><ul><li>How to prevent inflatable layers from puncturing or leaking</li><li>How to remove and care for electronics and batteries safely</li><li>How to check supplier quality and catch manufacturing defects</li></ul></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="pitch-slide" data-page="pitch">
-        <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 07 · 0:35 · Business model</p>
+            <p class="pitch-kicker">Business model</p>
             <h2>We'll start with direct sales and a $300 CAD target price.</h2>
             <div class="pitch-columns">
-                <p>We'd start on our own website, where we can explain the product and hear directly from people who are interested. Amazon and retail are possibilities for later, not current sales arrangements.</p>
+                <ul>
+                    <li>Initial channel: our website</li>
+                    <li>Possible future channels: Amazon and retail</li>
+                    <li>No current sales arrangements</li>
+                </ul>
                 <div>
                     <div class="pitch-stat"><strong>$300 CAD</strong><span>Our proposed price per robe</span></div>
-                    <div class="pitch-stat"><strong>Concept stage</strong><span>We haven't confirmed production, inventory, or a delivery date</span></div>
+                    <div class="pitch-stat"><strong>Concept stage</strong><span>Production, inventory, and delivery date not confirmed</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 08 · 0:45 · The numbers</p>
+            <p class="pitch-kicker">Draft economics</p>
             <h2>Our draft model has one number to reconcile.</h2>
             <div class="pitch-columns">
                 <div>
@@ -1571,40 +1608,47 @@
                     <div class="pitch-stat"><strong>$96 CAD</strong><span>Our estimated contribution at $300, before other overhead</span></div>
                 </div>
                 <div>
-                    <p>Our plan lists $118 for manufacturing, $23.92 for platform and processing, and $47 for advertising and shipping. Those items total $188.92, leaving $15.08 to explain against our $204 estimate.</p>
-                    <p>At our estimated $204 cost, we'd need about 32 sales at $96 contribution each to recover a $3,000 startup target. That's a rough estimate, not a full break-even analysis, and we still need to validate our cost assumptions.</p>
+                    <ul>
+                        <li>Listed costs: $118 manufacturing, $23.92 platform and processing, $47 advertising and shipping</li>
+                        <li>Listed costs total $188.92, leaving $15.08 unreconciled against the $204 estimate</li>
+                        <li>About 32 units at $96 contribution would recover a $3,000 target, before other overhead</li>
+                        <li>Rough estimate only; cost assumptions and break-even analysis need validation</li>
+                    </ul>
                 </div>
             </div>
             <p><a href="#survey">See the detailed cost table and projection sheet</a></p>
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 09 · 0:45 · The ask</p>
+            <p class="pitch-kicker">Funding proposal</p>
             <h2>$3,000 CAD for 15% equity.</h2>
             <div class="pitch-columns">
                 <div>
-                    <p>For this classroom pitch, we value the business at $17,000 before investment and $20,000 after investment. We'd use the funding to develop and evaluate an early prototype, not to promise a finished product.</p>
-                    <p class="pitch-callout">This is our student-project proposal for class, not a binding investment offer. We'd need adult, legal, and financial advice before considering any real investment.</p>
+                    <ul>
+                        <li>Proposed valuation: $17,000 pre-investment; $20,000 post-investment</li>
+                        <li>Use: develop and evaluate an early prototype</li>
+                    </ul>
+                    <p class="pitch-callout"><strong>Class proposal only:</strong> Not a binding investment offer. Any real investment would require adult, legal, and financial advice.</p>
                 </div>
                 <div>
-                    <h3>How we'd use the funds</h3>
+                    <h3>Planned use of funds</h3>
                     <ul class="pitch-budget">
                         <li>$1,200 — design work and prototype materials</li>
                         <li>$900 — safety and performance testing</li>
                         <li>$600 — supplier samples and component research</li>
                         <li>$300 — website, launch content, and administration</li>
                     </ul>
-                    <p>These are our planning estimates, and we'd refine them with supplier quotes.</p>
+                    <p>Planning estimates; to be refined with supplier quotes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="pitch-slide" data-page="pitch">
+    <section class="pitch-section" data-page="pitch">
         <div class="pitch-inner">
-            <p class="pitch-kicker">Slide 10 · 1:00 · Commercial and questions</p>
+            <p class="pitch-kicker">Concept and questions</p>
             <h2>Stratus: your comfort, your setting.</h2>
             <div class="pitch-commercial">
                 <div class="pitch-film-frame" role="img" aria-label="Illustration of the Stratus robe concept">
@@ -1615,22 +1659,18 @@
                         <path d="M70 87q-24 13-27 30m107-30q24 13 27 30" fill="none" stroke="#8de2c1" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <ol>
-                    <li><strong>0–7 sec:</strong> In our storyboard, a gamer pauses because they're too warm. On-screen: “Too hot to focus?”</li>
-                    <li><strong>7–17 sec:</strong> They tap our concept remote; the illustration shifts from cool airflow to warm insulation, then ambient light.</li>
-                    <li><strong>17–25 sec:</strong> They settle back into the game. Our voiceover: “One robe. A more personal way to get comfortable.”</li>
-                    <li><strong>End card:</strong> “Stratus Smart Robe. Your comfort, your setting. Explore the concept.”</li>
-                </ol>
+                <ul>
+                    <li>Storyboard concept: gamer feels too warm, adjusts comfort controls, returns to gaming</li>
+                    <li>Illustration only; not recorded product footage</li>
+                </ul>
             </div>
-            <p>Here's our storyboard for a possible future commercial; this isn't recorded product footage.</p>
-            <h3>Questions we are ready for</h3>
+            <h3>Key questions</h3>
             <div class="pitch-faq">
-                <details><summary>Have we built or tested the robe?</summary><p>No. It's still a product concept, and the website remote is a simulation. Prototyping and safety testing are next steps we'd need to take.</p></details>
-                <details><summary>How do we know customers will buy it?</summary><p>We've prepared a survey, but we don't have results yet to support demand. Gathering and sharing customer feedback is an early priority for us.</p></details>
-                <details><summary>Why are we asking for $3,000?</summary><p>That's our startup funding target. We'd use it for design, prototype materials, testing, supplier samples, and basic launch preparation.</p></details>
-                <details><summary>What's our biggest risk?</summary><p>We need to combine safe, washable electronics with reliable climate and inflatable systems in a comfortable garment. We'd test those systems before production.</p></details>
+                <details><summary>Have we built or tested the robe?</summary><p>No. It is a concept; the website remote is a simulation. Prototyping and safety testing are next.</p></details>
+                <details><summary>Is customer demand validated?</summary><p>No survey results yet. Customer feedback is an early priority.</p></details>
+                <details><summary>What is the $3,000 for?</summary><p>Design, prototype materials, testing, supplier samples, and launch preparation.</p></details>
+                <details><summary>What is the biggest risk?</summary><p>Combining safe, washable electronics with reliable climate and inflatable systems.</p></details>
             </div>
-            <p><strong>Thank you. We are Ethan and Adhvaith, and this is the Stratus Smart Robe.</strong></p>
         </div>
     </section>
 
