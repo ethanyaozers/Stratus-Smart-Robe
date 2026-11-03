@@ -655,6 +655,7 @@
         }
 
         @media (max-width: 700px) {
+            .survey-chart { grid-template-columns: 1fr; }
         }
 
         .business-grid {
@@ -692,6 +693,71 @@
         .business-callout strong {
             color: var(--text-main);
         }
+
+        .survey-chart {
+            display: grid;
+            grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+            gap: 30px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .survey-pie {
+            position: relative;
+            width: min(100%, 220px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: conic-gradient(#d84328 0deg 72deg, #3564c8 72deg 360deg);
+        }
+
+        .survey-pie-label {
+            position: absolute;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .survey-pie-label--yes {
+            left: 21%;
+            bottom: 24%;
+        }
+
+        .survey-pie-label--no {
+            top: 20%;
+            right: 19%;
+        }
+
+        .survey-response-count {
+            margin: 0 0 16px;
+            color: var(--text-muted);
+        }
+
+        .survey-legend {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .survey-legend li {
+            display: grid;
+            grid-template-columns: 12px minmax(0, 1fr) auto;
+            gap: 10px;
+            align-items: center;
+            color: var(--text-muted);
+        }
+
+        .survey-swatch {
+            width: 12px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+        }
+
+        .survey-swatch--yes { background: #3564c8; }
+        .survey-swatch--no { background: #d84328; }
+
+        .survey-legend strong { color: var(--text-main); }
 
         .projection-frame {
             width: 100%;
@@ -1386,7 +1452,23 @@
             <div class="business-links">
                 <a href="https://forms.gle/1bDL97QDJG4kMfaC6" target="_blank" rel="noopener noreferrer">Open the Stratus Smart Robe survey</a>
             </div>
-            <p>We don't have survey response totals or results to share yet. Once we collect responses, we'll add the real results here; we haven't estimated or invented any.</p>
+            <p>Five responses have been collected so far. These early results are not a guarantee of wider demand.</p>
+        </div>
+        <div class="business-block" style="margin-top: 22px;">
+            <h3>Do you want the future of smart housewear?</h3>
+            <div class="survey-chart">
+                <div class="survey-pie" role="img" aria-label="Pie chart showing 80 percent Yes and 20 percent No from five responses.">
+                    <span class="survey-pie-label survey-pie-label--yes" aria-hidden="true">80%</span>
+                    <span class="survey-pie-label survey-pie-label--no" aria-hidden="true">20%</span>
+                </div>
+                <div>
+                    <p class="survey-response-count">5 responses</p>
+                    <ul class="survey-legend" aria-label="Survey response breakdown">
+                        <li><span class="survey-swatch survey-swatch--yes" aria-hidden="true"></span><span>Yes</span><strong>80% · 4 responses</strong></li>
+                        <li><span class="survey-swatch survey-swatch--no" aria-hidden="true"></span><span>No</span><strong>20% · 1 response</strong></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="business-callout"><strong>Projection check:</strong> Our listed costs ($118 + $23.92 + $47) total $188.92, which is $15.08 below our stated $204 estimated unit cost. We still need to confirm what the remaining amount covers.</div>
         <div class="comparison-table-wrapper">
